@@ -1,0 +1,14 @@
+<app-header-client></app-header-client>
+<div class="container">
+  <h2>{{ categoria }}</h2>
+  <div class="card-container">
+    <div class="card" *ngFor="let servicio of servicios">
+      <div class="card-image"></div> <!-- Imagen en blanco -->
+      <div class="card-content">
+        <h3>{{ servicio.nombre }}</h3>
+        <p>{{ servicio.descripcion }}</p>
+        <p><strong>Precio:</strong> {{ servicio.precio }}</p>
+      </div>
+    </div>
+  </div>
+</div>

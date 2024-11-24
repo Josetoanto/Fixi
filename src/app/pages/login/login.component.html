@@ -1,0 +1,33 @@
+<div class="VistaPrincipal">
+  <div class="AmbasColumnas">
+    <div id="ColumnaPrincipal">
+      <h2 id="tituloSesion">Inicio De Sesión</h2>
+      <h4 id="inicioText">Nombre de usuario</h4>
+      <input
+        type="text"
+        id="email"
+        [(ngModel)]="email"
+        placeholder="Ingresa tu nombre de usuario"
+      />
+      <h4 id="passwordText">Contraseña</h4>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        placeholder="Ingresa tu contraseña"
+      />
+      <div class="error-message"></div>
+      <button (click)="login()" id="entrarbtn">Entrar</button>
+      <h3 id="continue">Continuar con</h3>
+      <button id="googlebtn">
+        Iniciar sesión con Google (Proximamente)
+        <img id="googleIcon" src="google-icon.png" alt="" />
+      </button>
+      <h3 id="pregunta">
+        ¿No tienes cuenta?
+        <button (click)="goToSignUp()" id="registrarse">Regístrate</button>
+      </h3>
+    </div>
+    <div id="mujer"><img id="mujerImg" src="loginImg.jpg" alt="" /></div>
+  </div>
+</div>

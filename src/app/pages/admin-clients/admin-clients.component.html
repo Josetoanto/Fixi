@@ -1,0 +1,55 @@
+<div class="main-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">AdministradorPrincipal</div>
+    <div class="app-title">Fixi</div>
+    <div class="header-icons">
+      <span class="icon gear-icon"></span>
+      <span class="icon user-icon"></span>
+      <span class="icon menu-icon"></span>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <div class="content">
+    <aside class="sidebar">
+      <ul class="menu">
+        <li class="menu-item">
+          <span class="menu-icon">🏠</span> Panel
+        </li>
+        <li class="menu-item active">
+          <span class="menu-icon">🛒</span> Clientes
+        </li>
+        <li class="menu-item">
+          <span class="menu-icon">👥</span> Fixis
+        </li>
+    
+      </ul>
+      <div class="logout">
+        <span>↩</span> Cerrar Sesión
+      </div>
+    </aside>
+
+    <div class="dashboard">
+      <h2 class="section-title">🔨 SECCION DE CLIENTES</h2>
+      <table class="users-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Fecha de Registro</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.name }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.fechacreate | date: 'dd/MM/yyyy' }}</td>
+            <td><button class="delete-btn" (click)="deleteUser(cliente.user_id)">🗑</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

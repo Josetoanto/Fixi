@@ -1,0 +1,134 @@
+/* Estilos generales */
+.VistaPrincipal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  /* Contenedor principal */
+  #ColumnaPrincipal {
+    padding: 50px 0 50px 50px;
+    width: 500px;
+  }
+  
+  /* Contenedor de columnas */
+  .AmbasColumnas {
+    width: 1000px;
+    display: flex;
+    background-color: #ffffff;
+    margin-top: 30px;
+    border-radius: 15px ;
+  }
+  
+  /* Imagen de la columna */
+  #mujerImg {
+    margin-top: 50px;
+    width: 400px;
+    height: 550px;
+    border-radius: 25px;
+    margin-bottom: 30px; 
+  }
+  
+  /* Título */
+  #tituloSesion {
+    font-size: 30px;
+  }
+  
+  /* Textos de entrada */
+  #inicioText, #passwordText {
+    padding-top: 13px;
+    color: black;
+    font-size: 13px;
+  }
+  
+  /* Mensaje de error */
+  #error-message {
+    color: red;
+  }
+  
+  /* Campos de entrada */
+  #email, #password {
+    width: 420px;
+    height: 45px;
+    border-radius: 3px;
+    text-indent: 5%;
+    border: 1px solid #877f7f;
+    transition: background-color 0.3s ease;
+  }
+  
+  #email:hover, #password:hover {
+    background-color: #dfdfdd;
+  }
+  
+  /* Botón de entrar */
+  #entrarbtn {
+    margin-top: 25px;
+    width: 420px;
+    height: 47px;
+    background-color: #2b4c32;
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  #entrarbtn:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Continuar texto */
+  #continue {
+    margin-left: 162px;
+    font-size: 13px;
+    color: #9794aa;
+  }
+  
+  /* Botones de Google y Facebook */
+  #googlebtn, #facebookbtn {
+    width: 420px;
+    height: 40px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #19181f;
+    border: 1px solid #877f7f;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+  
+  #googlebtn:hover, #facebookbtn:hover {
+    background-color: #dfdfdd;
+  }
+  
+  /* Iconos de Google y Facebook */
+  #googleIcon, #facebookIcon {
+    height: 15px;
+    width: 15px;
+    padding-left: 15px;
+    position: absolute;
+  }
+  
+  /* Pregunta de registro */
+  #pregunta {
+    margin-left: 105px;
+    font-size: 13px;
+    color: #9794aa;
+  }
+  
+  /* Botón de registrarse */
+  #registrarse {
+    font-weight: bold;
+    font-size: 13px;
+    color: blue;
+    background-color: transparent;
+    border: none;
+    transition: transform 0.3s ease;
+  }
+  
+  #registrarse:hover {
+    transform: scale(1.1);
+  }
+  

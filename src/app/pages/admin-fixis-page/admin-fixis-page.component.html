@@ -1,0 +1,57 @@
+<div class="main-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">AdministradorPrincipal</div>
+    <div class="app-title">Fixi</div>
+    <div class="header-icons">
+      <span class="icon gear-icon"></span>
+      <span class="icon user-icon"></span>
+      <span class="icon menu-icon"></span>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <div class="content">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <ul class="menu">
+        <li class="menu-item active">
+          <span class="menu-icon">🏠</span> Panel
+        </li>
+        <li class="menu-item">
+          <span class="menu-icon">🛒</span> Usuarios
+        </li>
+        <li class="menu-item">
+          <span class="menu-icon">👥</span> Fixis
+        </li>
+        
+      </ul>
+      <div class="logout">
+        <span>↩</span> Cerrar Sesión
+      </div>
+    </aside>
+
+    <!-- Table Section -->
+    <div class="dashboard">
+      <h2 class="section-title">🔧 SECCION DE PROVEEDORES</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Fecha de creación</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users" [hidden]="user.tipo_usuario !== 'Proveedor'">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.fechacreate | date: 'dd/MM/yyyy' }}</td>
+            <td><button class="delete-btn" (click)="deleteUser(user.user_id)">🗑</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

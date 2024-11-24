@@ -1,0 +1,17 @@
+.headTextUserHome{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-right: 60px;
+    color: #677e6d;
+}
+
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+}

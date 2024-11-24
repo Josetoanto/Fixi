@@ -1,0 +1,79 @@
+.servicesHome{
+    position: relative;
+  background-image: url('../../../../public/fondoHome.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+}
+
+.servicesHomeEslogan{
+    margin-top: 1200px;
+    color: #2b4c32;
+}
+
+.searchServicesInput{
+    width: 700px;
+    text-indent: 2%;
+    border: 2px solid #2b4c32 ;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.serchBoxServicesHome{
+    display: flex;
+    flex-direction: row;
+}
+
+.btnSearch{
+    background-color: #2b4c32;
+    border: 0px solid black;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.imgSearch {
+    margin: 15px;
+    width: 25px;
+    height: 25px;
+}
+
+.servicesImg{
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+.divPageAux{
+   height: 150px;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center; 
+   align-items: center; 
+   background: linear-gradient(to bottom, #c2f7fe, #ffffff); 
+   padding-top: 25px;
+   color: #2b4c32;
+}
+
+
+.grid-container {
+    margin-left: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    gap: 20px; 
+    padding: 10px;
+  }
+  
+  app-card {
+    margin-top: 70px;
+    width: 400px; 
+  }
+  

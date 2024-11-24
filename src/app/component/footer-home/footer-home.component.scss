@@ -1,0 +1,76 @@
+/* Estilos para el contenedor del pie de página */
+.footer {
+    background-color: #bfc3c5;
+    color: #333;
+    font-size: 14px;
+    padding: 20px 0;
+    margin-top: 1150px;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .social-media {
+    text-align: center;
+  }
+
+  .social-media p {
+    margin-top: 5px;
+  }
+  
+  
+  .social-icons {
+    margin-top: 5px;
+  }
+  
+  .social-icons i {
+    font-size: 14px; /* Tamaño pequeño */
+    color: #333;
+    margin: 0 8px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .social-icons i:hover {
+    color: #555; /* Cambia el color al pasar el cursor */
+  }
+  
+  /* Estilos adicionales para las secciones del pie de página */
+  .footer-section h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-section ul li a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .app-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .app-buttons img {
+    width: 100px;
+    height: 35px;
+    cursor: pointer;
+  }
+  
