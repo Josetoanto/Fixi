@@ -1,39 +1,48 @@
-.headerBox{
+.headerBox {
     display: flex;
-    flex-direction: row;
-    background-color: #ffffff;
-    gap: 5%;
-    padding-top: 25px;
-    border-bottom: 3px solid black;
-    justify-content: center; 
+    justify-content: space-between; 
     align-items: center; 
+    background-color: #ffffff;
+    padding: 20px 40px; 
+    border-bottom: 3px solid black;
+    position: relative; 
 }
 
-.logo{
-    margin-left: 55px;
-    margin-right: 55%;
-}
 
-.HeaderBox_EnterBox{
+.logo {
+    font-size: 32px;
+    font-weight: bold;
     color: #055240;
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
+    margin: 0;
 }
 
-.buttonHeader{
+
+.serviceText {
+    position: fixed;
+    right: 270px; 
+    font-size: 24px;
+    font-weight: normal;
+    color: #555;
+    margin: 0;
+}
+
+.HeaderBox_EnterBox {
+    display: flex;
+    gap: 20px; 
+}
+
+.buttonHeader {
     background-color: transparent;
-    border: 0px solid black;
-    height: max-content;
-    width: max-content;
-    font-size: 28px;
-    margin-bottom: 20px;
-    margin-right: 15px;
-    transition: transform 0.3s ease-in;
+    border: none;
+    font-size: 18px;
     color: #055240;
     cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
-.buttonHeader:hover{
-    transform: scale(1.05);
+.buttonHeader:hover {
+    transform: scale(1.1);
+    color: #033d30;
 }

@@ -21,7 +21,7 @@ export interface SolicitudCreate {
   providedIn: 'root',
 })
 export class SolicitudService {
-  private apiUrl = 'https://lh8wfcbm-8001.use2.devtunnels.ms/solicitudes'; // Cambia esto a tu endpoint base
+  private apiUrl = 'https://fixiapi.integrador.xyz/solicitudes'; // Cambia esto a tu endpoint base
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 

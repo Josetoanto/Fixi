@@ -1,12 +1,17 @@
-.headTextUserHome{
+.headTextUserHome {
     display: flex;
     justify-content: center;
     margin-top: 30px;
     margin-right: 60px;
     color: #677e6d;
-}
-
-.cardContainer {
+    transition: color 0.3s ease; /* Añadimos una transición suave */
+  }
+  
+  .headTextUserHome:hover {
+    color: #4a5d4e; /* Cambia a un color más oscuro al pasar el cursor */
+  }
+  
+  .cardContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     grid-gap: 20px;
@@ -14,4 +19,20 @@
     width: 100%;
     max-width: 1200px; 
     margin: 0 auto; 
-}
+  }
+  
+  .cardContainer div {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suavidad para transformaciones */
+  }
+  
+  .cardContainer div:hover {
+    transform: translateY(-10px); /* Mueve la tarjeta hacia arriba */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega más sombra */
+    background-color: #f0f0f0; /* Opcional: Cambia ligeramente el fondo */
+  }
+  

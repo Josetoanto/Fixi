@@ -1,0 +1,73 @@
+<app-header-client></app-header-client>
+<div class="profile-card">
+  <div class="profile-photo">
+    <!-- Foto de perfil -->
+    <img [src]="perfil?.foto ? 'data:image/png;base64,' + perfil?.foto : 'https://via.placeholder.com/150'" alt="Foto de perfil" />
+  </div>
+
+  <!-- Información del perfil - Modo visual -->
+  <div class="profile-info" *ngIf="!editando">
+    <h2>{{ perfil?.nombre || 'Nombre no disponible' }}</h2>
+    <hr />
+    <p><strong>Teléfono:</strong> {{ perfil?.telefono || 'Teléfono no disponible' }}</p>
+    <p><strong>Dirección:</strong>
+      {{ perfil?.direccion?.ciudad || '' }},
+      {{ perfil?.direccion?.colonia || '' }},
+      {{ perfil?.direccion?.avenida || '' }},
+      {{ perfil?.direccion?.numexterior || '' }},
+      C.P. {{ perfil?.direccion?.codigopost || '' }}
+    </p>
+    <button class="edit-button" (click)="toggleEditar()">Editar perfil</button>
+  </div>
+
+  <!-- Formulario para editar el perfil - Modo edición -->
+  <div *ngIf="editando">
+    <form (ngSubmit)="guardarCambios()">
+      <label>
+        Descripción:
+        <input type="text" [(ngModel)]="perfilEdit.description" name="description" required />
+      </label>
+
+      <label>
+        Teléfono:
+        <input type="text" [(ngModel)]="perfilEdit.telefono" name="telefono" required />
+      </label>
+
+      <fieldset>
+        <legend>Dirección</legend>
+        <label>
+          Ciudad:
+          <select [(ngModel)]="perfilEdit.direccion.ciudad" name="ciudad" required>
+            <option *ngFor="let ciudad of ciudades" [value]="ciudad">
+              {{ ciudad }}
+            </option>
+          </select>
+        </label>
+        <label>
+          Colonia:
+          <input type="text" [(ngModel)]="perfilEdit.direccion.colonia" name="colonia" required />
+        </label>
+        <label>
+          Avenida:
+          <input type="text" [(ngModel)]="perfilEdit.direccion.avenida" name="avenida" required />
+        </label>
+        <label>
+          Número exterior:
+          <input type="number" [(ngModel)]="perfilEdit.direccion.numexterior" name="numexterior" required />
+        </label>
+        <label>
+          Código Postal:
+          <input type="number" [(ngModel)]="perfilEdit.direccion.codigopost" name="codigopost" required />
+        </label>
+      </fieldset>
+
+      <label>
+        Foto:
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+      </label>
+
+      <button type="submit" class="save-button">Guardar</button>
+      <button type="button" class="cancel-button" (click)="toggleEditar()">Cancelar</button>
+    </form>
+  </div>
+</div>

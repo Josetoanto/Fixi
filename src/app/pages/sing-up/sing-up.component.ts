@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./sing-up.component.scss'],
 })
 export class SingUpComponent {
-  
+  name: string = '';
   email: string = '';
   password: string = '';
   passwordConfirm: string = '';
@@ -33,7 +33,7 @@ export class SingUpComponent {
       return;
     }
     const userData = {
-      name: 'Nombre Temporal',
+      name: this.name,
       email: this.email,
       password: this.password,
       tipo_usuario: this.tipoUsuario,
@@ -42,6 +42,7 @@ export class SingUpComponent {
     this.userService.register(userData).subscribe(
       (response) => {
         console.log('Usuario registrado exitosamente:', response);
+        this.goToLogin()
       },
       (error) => {
         console.error('Error en el registro:', error);

@@ -141,4 +141,54 @@
   #iniciarSesion:hover {
     transform: scale(1.1);
   }
+  @media (max-width: 768px) {
+    .AmbasColumnas {
+      flex-direction: column;
+      width: 100%;
+      padding: 15px;
+    }
   
+    #mujerImg {
+      display: none;
+    }
+  
+    #ColumnaPrincipal {
+      padding: 20px;
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    #tituloSesion {
+      font-size: 24px;
+    }
+  
+    input, select {
+      width: 100%;
+    }
+  
+    #entrarbtn {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 480px) {
+    #entrarbtn {
+      font-size: 16px;
+      height: 45px;
+    }
+  
+    #pregunta {
+      font-size: 12px;
+    }
+  
+    #iniciarSesion {
+      font-size: 12px;
+    }
+  
+    #tituloSesion {
+      font-size: 22px;
+    }
+  
+    input, select {
+      font-size: 14px;
+    }
+  }

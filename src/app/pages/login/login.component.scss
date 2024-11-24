@@ -131,4 +131,60 @@
   #registrarse:hover {
     transform: scale(1.1);
   }
+
+  @media (max-width: 768px) {
+    .AmbasColumnas {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    #ColumnaPrincipal {
+      width: 100%;
+      padding: 30px 20px;
+    }
+  
+    #tituloSesion {
+      font-size: 24px;
+    }
+  
+    #email, #password, #entrarbtn, #googlebtn, #facebookbtn {
+      width: 90%;
+      max-width:90%;
+    }
+  
+    #mujerImg {
+      display: none;
+    }
+  
+    #pregunta {
+      font-size: 14px;
+    }
+  
+    #continue {
+      font-size: 14px;
+    }
+  }
+
+@media (max-width: 480px) {
+  #tituloSesion {
+    font-size: 20px;
+  }
+
+  #entrarbtn {
+    font-size: 18px;
+    height: 45px;
+  }
+
+  #googlebtn, #facebookbtn {
+    font-size: 14px;
+  }
+
+  #pregunta {
+    font-size: 12px;
+  }
+
+  #registrarse {
+    font-size: 12px;
+  }
+}
   

@@ -20,8 +20,10 @@ export class UserHomeComponent implements AfterViewInit {
     { title: 'Fontanería', imageUrl: 'fontaneria.jpeg', fixisAvailable: 0, minPrice: 80 },
     { title: 'Pintura', imageUrl: 'pintura.jpeg', fixisAvailable: 0, minPrice: 120 },
     { title: 'Montaje de muebles', imageUrl: 'motajeMueble.jpeg', fixisAvailable: 0, minPrice: 65 },
-  ];
-
+    { title: 'Albañilería', imageUrl: 'albanileria.jpeg', fixisAvailable: 0, minPrice: 90 },
+    { title: 'Mudanza', imageUrl: 'mudanza.jpeg', fixisAvailable: 0, minPrice: 150 },
+    { title: 'Carpintería', imageUrl: 'carpinteria.jpeg', fixisAvailable: 0, minPrice: 110 }
+];
   constructor(private servicioService: ServicioService) {}
 
   ngAfterViewInit(): void {

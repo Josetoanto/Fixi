@@ -8,19 +8,19 @@ import { TokenService } from './token.service'; // Importa el TokenService
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'https://lh8wfcbm-8001.use2.devtunnels.ms';
+  private apiUrl = 'https://fixiapi.integrador.xyz';
 
   constructor(
     private http: HttpClient,
     private tokenService: TokenService // Inyecta el TokenService
   ) {}
 
-  // Registrar un nuevo usuario
   register(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/users/`, userData).pipe(
       tap((response: any) => {
         const token: any = { value: response.token };
         this.tokenService.saveToken(token); // Guardar el token usando el TokenService
+        this.tokenService.saveProfileName(response.name)
       }),
       catchError((error) => {
         console.error('Error durante el registro:', error);
@@ -34,7 +34,9 @@ export class UserService {
     return this.http.post(`${this.apiUrl}/auth/token`, { email, password }).pipe(
       tap((response: any) => {
         const token: any = { value: response.access_token };
-        this.tokenService.saveToken(token); // Guardar el token usando el TokenService
+        this.tokenService.saveId(response.user_id)
+        this.tokenService.saveProfileId(response.perfil_id)
+        this.tokenService.saveToken(token); 
       }),
       catchError((error) => {
         console.error('Error durante el inicio de sesión:', error);

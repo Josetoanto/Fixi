@@ -1,0 +1,89 @@
+.profile-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .profile-info,
+  form {
+    text-align: center;
+  }
+  
+  .profile-info h2 {
+    margin-bottom: 10px;
+  }
+  
+  .profile-info p {
+    margin: 5px 0;
+  }
+  
+  form label {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  form input {
+    padding: 8px;
+    width: 100%;
+    max-width: 300px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .logout-button {
+    background-color: #ff4b5c;
+    color: #fff;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff1c3c;
+  }
+  
+  .edit-button {
+    background-color: #4caf50;
+    color: #fff;
+    margin-top: 10px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-button:hover {
+    background-color: #45a049;
+  }
+  
+  .save-button {
+    background-color: #007bff;
+    color: #fff;
+    margin-top: 10px;
+  }
+  
+  .cancel-button {
+    background-color: #6c757d;
+    color: #fff;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  

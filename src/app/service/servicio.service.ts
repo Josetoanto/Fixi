@@ -8,7 +8,7 @@ import { TokenService } from './token.service'; // Importa el TokenService
   providedIn: 'root',
 })
 export class ServicioService {
-  private apiUrl = 'https://lh8wfcbm-8001.use2.devtunnels.ms'; // Cambiar por la URL de tu API
+  private apiUrl = 'https://fixiapi.integrador.xyz'; // Cambiar por la URL de tu API
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 

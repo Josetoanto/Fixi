@@ -9,6 +9,7 @@ import { AdminFixisPageComponent } from './pages/admin-fixis-page/admin-fixis-pa
 import { AdminClientsComponent } from './pages/admin-clients/admin-clients.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
+import { PerfilUsuarioComponent } from './pages/perfil-usuario/perfil-usuario.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent }, // Ruta para la página principal
@@ -20,6 +21,6 @@ export const routes: Routes = [
   { path: 'fixis', component: AdminFixisPageComponent},
   { path: 'clients', component: AdminClientsComponent},
   { path: 'servicios', component: ServiciosComponent },
+  { path: 'perfil', component: PerfilUsuarioComponent },
   { path: '**', component: ErrorPageComponent},
-
 ];
