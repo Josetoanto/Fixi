@@ -1,5 +1,6 @@
-<app-header-fixi>
+<app-header-fixi></app-header-fixi>
 <div class="perfil-fixi-container">
+  <!-- Sección izquierda -->
   <div class="perfil-izquierda">
     <div class="profile-card">
       <div class="profile-photo">
@@ -8,14 +9,11 @@
           alt="Foto de perfil"
         />
       </div>
-
       <div class="profile-info">
-        <h2>{{ perfil?.nombre || 'Nombre no disponibl' }}</h2>
+        <h2>{{ perfil?.nombre || 'Nombre no disponible' }}</h2>
         <hr />
         <p><strong>Teléfono:</strong> {{ perfil?.telefono || 'No disponible' }}</p>
-        <p>
-          <strong>Ciudad:</strong> {{ perfil?.direccion?.ciudad || 'No disponible' }}
-        </p>
+        <p><strong>Ciudad:</strong> {{ perfil?.direccion?.ciudad || 'No disponible' }}</p>
         <div class="habilidades">
           <button *ngFor="let habilidad of perfil?.habilidades" class="habilidad">
             {{ habilidad }}
@@ -31,20 +29,27 @@
     </div>
   </div>
 
-  <!-- Sección de la derecha (Trabajos y servicios) -->
+  <!-- Sección derecha -->
   <div class="perfil-derecha">
     <h3>Trabajos</h3>
-    <div class="trabajos-lista">
+    <div *ngIf="trabajos.length > 0; else noTrabajos" class="trabajos-lista">
       <div class="trabajo" *ngFor="let trabajo of trabajos">
         <p>{{ trabajo.titulo }}</p>
-        <p>Total: {{ trabajo.costo | currency:'MXN' }}</p>
+        <p>Total: {{ trabajo.costo | currency: 'MXN' }}</p>
       </div>
     </div>
+    <ng-template #noTrabajos>
+      <p>No tienes trabajos en curso. <button (click)="agregarTrabajo()">Agregar trabajo</button></p>
+    </ng-template>
+
     <h3>Trabajos ya hechos</h3>
-    <div class="trabajos-hechos">
+    <div *ngIf="trabajosHechos.length > 0; else noTrabajosHechos" class="trabajos-hechos">
       <div class="trabajo-hecho" *ngFor="let foto of trabajosHechos">
-        <p>Fotos</p>
+        <p>{{ foto.titulo }}</p>
       </div>
     </div>
+    <ng-template #noTrabajosHechos>
+      <p>No tienes trabajos hechos aún.</p>
+    </ng-template>
   </div>
 </div>

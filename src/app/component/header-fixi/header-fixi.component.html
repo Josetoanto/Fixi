@@ -1,0 +1,24 @@
+<div class="headerClienteContainer">
+    <h3>FIXI</h3>
+    <div class="search">
+      <input type="text" class="searchInput" placeholder="Buscar">
+      <button class="searchBtn"><img class="imgSearch" src="search.png" alt=""></button>
+    </div>
+    <img class="taskBtn" (click)="redirectToServices()" src="task.png" alt="">
+    <img class="userBtn" (click)=" redirectToProfile()" src="user.png" alt="">
+  
+    <!-- Menú desplegable -->
+    <div class="menuContainer">
+      <img class="menuBtn" src="menu.png" alt="" (click)="toggleMenu()">
+      <div class="dropdownMenu" [class.open]="menuOpen">
+        <a href="/homeProveedor">Home</a>
+
+        <a href="/perfilFixi">Perfil</a>
+        <a href="/serviciosFixi">Servicios</a>
+
+        <hr>
+        <a href="javascript:void(0)" (click)="cerrarSesion()">Cerrar sesión</a>
+      </div>
+    </div>
+  </div>
+  

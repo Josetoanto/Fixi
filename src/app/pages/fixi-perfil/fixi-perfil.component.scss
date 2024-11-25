@@ -1,0 +1,98 @@
+.perfil-fixi-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  
+    .perfil-izquierda,
+    .perfil-derecha {
+      flex: 1;
+    }
+  
+    .profile-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      background-color: #fff;
+  
+      .profile-photo {
+        text-align: center;
+  
+        img {
+          border-radius: 50%;
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+        }
+      }
+  
+      .profile-info {
+        margin-top: 20px;
+  
+        h2 {
+          text-align: center;
+        }
+  
+        .habilidades {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin: 10px 0;
+  
+          .habilidad {
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+          }
+        }
+      }
+  
+      .edit-button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  
+    .rating {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+  
+      .star {
+        font-size: 20px;
+        color: gold;
+        margin: 0 2px;
+      }
+    }
+  
+    .trabajos-lista,
+    .trabajos-hechos {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: #fff;
+  
+      .trabajo,
+      .trabajo-hecho {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+  
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  

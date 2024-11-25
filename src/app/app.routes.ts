@@ -10,6 +10,8 @@ import { AdminClientsComponent } from './pages/admin-clients/admin-clients.compo
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { PerfilUsuarioComponent } from './pages/perfil-usuario/perfil-usuario.component';
+import { FixiHomeComponent } from './pages/fixi-home/fixi-home.component';
+import { FixiPerfilComponent } from './pages/fixi-perfil/fixi-perfil.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent }, // Ruta para la página principal
@@ -22,5 +24,7 @@ export const routes: Routes = [
   { path: 'clients', component: AdminClientsComponent},
   { path: 'servicios', component: ServiciosComponent },
   { path: 'perfil', component: PerfilUsuarioComponent },
+  { path: 'homeProveedor', component: FixiHomeComponent },
+  { path: 'perfilFixi', component: FixiPerfilComponent },
   { path: '**', component: ErrorPageComponent},
 ];
