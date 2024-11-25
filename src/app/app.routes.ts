@@ -16,8 +16,8 @@ import { HistorialComponent } from './pages/historial/historial.component';
 import { ChatComponent } from './pages/chat/chat.component';
 
 export const routes: Routes = [
-    { path: '', component: HomePageComponent }, // Ruta para la página principal
-    { path: 'categoria/:categoria', component: CategoryPageComponent }, // Ruta dinámica para categorías
+    { path: '', component: HomePageComponent }, 
+    { path: 'categoria/:categoria', component: CategoryPageComponent }, 
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SingUpComponent },
   { path: 'homeClient', component: UserHomeComponent },

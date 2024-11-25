@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { HeaderFixiComponent } from "../../component/header-fixi/header-fixi.component";
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [NgFor, FormsModule, NgClass],
+  imports: [NgFor, FormsModule, NgClass, HeaderFixiComponent],
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })

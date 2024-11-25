@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Importa el Router
+import { Router } from '@angular/router';
+import { HeaderFixiComponent } from "../header-fixi/header-fixi.component"; // Importa el Router
 
 
 @Component({
   selector: 'app-header-client',
   standalone: true,
   templateUrl: './header-client.component.html',
-  styleUrls: ['./header-client.component.scss']
+  styleUrls: ['./header-client.component.scss'],
+  imports: [HeaderFixiComponent]
 })
 export class HeaderClientComponent {
   menuOpen = false;
