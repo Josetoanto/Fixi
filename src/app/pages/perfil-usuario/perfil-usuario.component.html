@@ -1,16 +1,19 @@
 <app-header-client></app-header-client>
+
 <div class="profile-card">
   <div class="profile-photo">
-    <!-- Foto de perfil -->
-    <img [src]="perfil?.foto ? 'data:image/png;base64,' + perfil?.foto : 'https://via.placeholder.com/150'" alt="Foto de perfil" />
+    <img 
+      [src]="perfil?.foto ? 'data:image/png;base64,' + perfil?.foto : 'https://via.placeholder.com/150'" 
+      alt="Foto de perfil" 
+    />
   </div>
 
-  <!-- Información del perfil - Modo visual -->
+  <!-- Información del perfil - Vista -->
   <div class="profile-info" *ngIf="!editando">
     <h2>{{ perfil?.nombre || 'Nombre no disponible' }}</h2>
-    <hr />
     <p><strong>Teléfono:</strong> {{ perfil?.telefono || 'Teléfono no disponible' }}</p>
-    <p><strong>Dirección:</strong>
+    <p>
+      <strong>Dirección:</strong> 
       {{ perfil?.direccion?.ciudad || '' }},
       {{ perfil?.direccion?.colonia || '' }},
       {{ perfil?.direccion?.avenida || '' }},
@@ -20,51 +23,54 @@
     <button class="edit-button" (click)="toggleEditar()">Editar perfil</button>
   </div>
 
-  <!-- Formulario para editar el perfil - Modo edición -->
-  <div *ngIf="editando">
+  <!-- Formulario - Edición -->
+  <div *ngIf="editando" class="edit-form">
     <form (ngSubmit)="guardarCambios()">
-      <label>
-        Descripción:
+      <div class="form-group">
+        <label>Descripción:</label>
         <input type="text" [(ngModel)]="perfilEdit.description" name="description" required />
-      </label>
+      </div>
 
-      <label>
-        Teléfono:
+      <div class="form-group">
+        <label>Teléfono:</label>
         <input type="text" [(ngModel)]="perfilEdit.telefono" name="telefono" required />
-      </label>
+      </div>
 
       <fieldset>
         <legend>Dirección</legend>
-        <label>
-          Ciudad:
+        <div class="form-group">
+          <label>Ciudad:</label>
           <select [(ngModel)]="perfilEdit.direccion.ciudad" name="ciudad" required>
-            <option *ngFor="let ciudad of ciudades" [value]="ciudad">
-              {{ ciudad }}
-            </option>
+            <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
           </select>
-        </label>
-        <label>
-          Colonia:
+        </div>
+        <div class="form-group">
+          <label>Colonia:</label>
           <input type="text" [(ngModel)]="perfilEdit.direccion.colonia" name="colonia" required />
-        </label>
-        <label>
-          Avenida:
+        </div>
+        <div class="form-group">
+          <label>Avenida:</label>
           <input type="text" [(ngModel)]="perfilEdit.direccion.avenida" name="avenida" required />
-        </label>
-        <label>
-          Número exterior:
+        </div>
+        <div class="form-group">
+          <label>Número exterior:</label>
           <input type="number" [(ngModel)]="perfilEdit.direccion.numexterior" name="numexterior" required />
-        </label>
-        <label>
-          Código Postal:
+        </div>
+        <div class="form-group">
+          <label>Código Postal:</label>
           <input type="number" [(ngModel)]="perfilEdit.direccion.codigopost" name="codigopost" required />
-        </label>
+        </div>
       </fieldset>
-      
-      
 
-      <button type="submit" class="save-button">Guardar</button>
-      <button type="button" class="cancel-button" (click)="toggleEditar()">Cancelar</button>
+      <div class="form-group">
+        <label>Foto:</label>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="save-button">Guardar</button>
+        <button type="button" class="cancel-button" (click)="toggleEditar()">Cancelar</button>
+      </div>
     </form>
   </div>
 </div>

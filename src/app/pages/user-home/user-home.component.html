@@ -1,17 +1,14 @@
 <app-header-client></app-header-client>
 <div class="headTextUserHome">
-<h3 >Reserva tu proxima tarea</h3>
+  <h3>Reserva tu próxima tarea</h3>
 </div>
 <div class="cardContainer">
-    <app-card
-      *ngFor="let card of cards"
-      [title]="card.title"
-      [imageUrl]="card.imageUrl"
-      [fixisAvailable]="card.fixisAvailable"
-      [minPrice]="card.minPrice"
-      [routerLink]="['/categoria', card.title]"
-      >
-    </app-card>
+  <app-card
+    *ngFor="let card of cards"
+    [title]="card.title"
+    [imageUrl]="card.imageUrl"
+    [fixisAvailable]="card.fixisAvailable"
+    [minPrice]="card.minPrice"
+    [routerLink]="['/categoria', card.title]"
+  ></app-card>
 </div>
-  
-

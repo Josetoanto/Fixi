@@ -1,38 +1,93 @@
+/* Estilo del encabezado de texto */
 .headTextUserHome {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    margin-right: 60px;
-    color: #677e6d;
-    transition: color 0.3s ease; /* Añadimos una transición suave */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  color: #5a7056;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  transition: color 0.3s ease-in-out;
+}
+
+.headTextUserHome:hover {
+  color: #3d4f3d;
+}
+
+/* Contenedor de tarjetas */
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo */
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilo de las tarjetas */
+.cardContainer app-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.cardContainer app-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background-color: #f8f8f8;
+}
+
+/* Imagen dentro de la tarjeta (opcional si existe) */
+.cardContainer app-card img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Título de la tarjeta */
+.cardContainer app-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4a5d4e;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Información adicional de la tarjeta */
+.cardContainer app-card p {
+  font-size: 16px;
+  color: #6b7b6d;
+  text-align: center;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 768px) {
+  .headTextUserHome {
+    font-size: 22px;
   }
-  
-  .headTextUserHome:hover {
-    color: #4a5d4e; /* Cambia a un color más oscuro al pasar el cursor */
-  }
-  
+
   .cardContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-gap: 20px;
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px; 
-    margin: 0 auto; 
+    padding: 10px;
+    gap: 15px;
   }
-  
-  .cardContainer div {
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suavidad para transformaciones */
+
+  .cardContainer app-card {
+    padding: 15px;
   }
-  
-  .cardContainer div:hover {
-    transform: translateY(-10px); /* Mueve la tarjeta hacia arriba */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega más sombra */
-    background-color: #f0f0f0; /* Opcional: Cambia ligeramente el fondo */
+
+  .cardContainer app-card h3 {
+    font-size: 18px;
   }
-  
+
+  .cardContainer app-card p {
+    font-size: 14px;
+  }
+}
