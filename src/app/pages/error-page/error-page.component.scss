@@ -4,17 +4,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f4f7fa;
     position: relative;
     overflow: hidden;
   }
   
   .errorContent {
     text-align: center;
-    background-color: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
     max-width: 450px;
     animation: fadeIn 1s ease-in-out;
   }

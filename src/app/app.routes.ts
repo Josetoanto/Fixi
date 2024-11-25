@@ -13,6 +13,7 @@ import { PerfilUsuarioComponent } from './pages/perfil-usuario/perfil-usuario.co
 import { FixiHomeComponent } from './pages/fixi-home/fixi-home.component';
 import { FixiPerfilComponent } from './pages/fixi-perfil/fixi-perfil.component';
 import { HistorialComponent } from './pages/historial/historial.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent }, // Ruta para la página principal
@@ -28,5 +29,6 @@ export const routes: Routes = [
   { path: 'homeProveedor', component: FixiHomeComponent },
   { path: 'perfilFixi', component: FixiPerfilComponent },
   { path: 'historial', component: HistorialComponent },
+  { path: 'chat', component: ChatComponent },
   { path: '**', component: ErrorPageComponent},
 ];
