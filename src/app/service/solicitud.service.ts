@@ -33,7 +33,6 @@ export class SolicitudService {
     });
   }
 
-  // Crear una solicitud
   crearSolicitud(solicitud: SolicitudCreate): Observable<Solicitud> {
     return this.http.post<Solicitud>(`${this.apiUrl}/`, solicitud, {
       headers: this.getHeaders(),

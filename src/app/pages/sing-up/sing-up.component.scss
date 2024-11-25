@@ -9,7 +9,6 @@
   /* Contenedor principal */
   #ColumnaPrincipal {
     margin-top: 25px;
-    padding: 10px;
     width: 500px;
     margin-bottom: 20px;
   }
@@ -26,7 +25,7 @@
   #mujerImg {
     margin: 50px 50px 10px;
     width: 400px;
-    height: 550px;
+    height: 570px;
     border-radius: 25px;
   }
   
@@ -38,7 +37,7 @@
   #inicioText, #tipoUsuarioText, #passwordText, #passwordTextConfirm {
     color: black;
     font-size: 13px;
-    height: 30px;
+    height: 5px;
   }
   
   #email, #password, #passwordConfirm {
@@ -122,7 +121,7 @@
   #iniciarSesion {
     font-weight: bold;
     font-size: 13px;
-    color: blue;
+    color: #19181f;
     background-color: transparent;
     border: none;
     transition: transform 0.3s ease;
