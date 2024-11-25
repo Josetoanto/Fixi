@@ -5,13 +5,16 @@
     <div class="profile-card">
       <div class="profile-photo">
         <img
-          [src]="perfil?.foto ? 'data:image/png;base64,' + perfil.foto : 'https://via.placeholder.com/150'"
-          alt="Foto de perfil"
-        />
+  [src]="perfil?.foto ? (perfil.foto.startsWith('data:image') ? perfil.foto : 'data:image/png;base64,' + perfil.foto) : 'https://via.placeholder.com/150'"
+  alt="Foto de perfil"
+/>
+
       </div>
-      <div class="profile-info">
+      <div class="profile-info" *ngIf="!editando; else editarFormulario">
         <h2>{{ perfil?.nombre || 'Nombre no disponible' }}</h2>
         <hr />
+        <p><strong>Descripcion:</strong> {{ perfil?.description || 'No disponible' }}</p>
+
         <p><strong>Teléfono:</strong> {{ perfil?.telefono || 'No disponible' }}</p>
         <p><strong>Ciudad:</strong> {{ perfil?.direccion?.ciudad || 'No disponible' }}</p>
         <div class="habilidades">
@@ -21,6 +24,74 @@
         </div>
         <button class="edit-button" (click)="toggleEditar()">Editar perfil</button>
       </div>
+      <ng-template #editarFormulario>
+        <form (ngSubmit)="guardarCambios()">
+          <div>
+            <label for="nombre">Descripcion del perfil:</label>
+            <input id="nombre" type="text" [(ngModel)]="perfil.description" name="nombre" required />
+          </div>
+          <div>
+            <label for="telefono">Teléfono:</label>
+            <input id="telefono" type="text" [(ngModel)]="perfil.telefono" name="telefono" />
+          </div>
+          <div>
+            <label for="habilidad">Habilidad/Profesión:</label>
+            <select
+              id="habilidad"
+              [(ngModel)]="perfil.habilidades"
+              name="habilidad"
+            >
+              <option *ngFor="let profesion of profesiones" [value]="profesion">
+                {{ profesion }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <h3>Dirección</h3>
+            <label for="ciudad">Ciudad:</label>
+            <input id="ciudad" type="text" [(ngModel)]="perfil.direccion.ciudad" name="ciudad" />
+            <label for="calle">Colonia:</label>
+            <input id="calle" type="text" [(ngModel)]="perfil.direccion.colonia" name="calle" />
+            <label for="estado">Avenida:</label>
+            <input id="estado" type="text" [(ngModel)]="perfil.direccion.avenida" name="estado" />
+            <label for="estado">Numero Exterior:</label>
+            <input id="estado" type="text" [(ngModel)]="perfil.direccion.numexterior" name="estado" />
+            <label for="codigo-postal">Código postal:</label>
+
+          
+            <input
+              id="codigo-postal"
+              type="text"
+              [(ngModel)]="perfil.direccion.codigopost"
+              name="codigo-postal"
+            />
+            <div>
+                <label for="foto">Foto principal:</label>
+                <input
+                  id="foto"
+                  type="file"
+                  (change)="onFileSelected($event, 'foto')"
+                  accept="image/*"
+                />
+              </div>
+            
+              <div>
+                <label for="imagenes">Imágenes adicionales:</label>
+                <input
+                id="imagenes"
+                type="file"
+                multiple
+                (change)="onFileSelected($event, 'imagenes')"
+                accept="image/*"
+                />
+              </div>
+          </div>
+          <div class="form-buttons">
+            <button type="submit" class="save-button">Guardar</button>
+            <button type="button" class="cancel-button" (click)="toggleEditar()">Cancelar</button>
+          </div>
+        </form>
+      </ng-template>
     </div>
     <hr />
     <p>Reseñas: 19</p>
@@ -31,25 +102,33 @@
 
   <!-- Sección derecha -->
   <div class="perfil-derecha">
-    <h3>Trabajos</h3>
+    <h3>Servicios</h3>
     <div *ngIf="trabajos.length > 0; else noTrabajos" class="trabajos-lista">
       <div class="trabajo" *ngFor="let trabajo of trabajos">
-        <p>{{ trabajo.titulo }}</p>
+        <p>{{ trabajo.descripcion }}</p>
         <p>Total: {{ trabajo.costo | currency: 'MXN' }}</p>
       </div>
     </div>
     <ng-template #noTrabajos>
-      <p>No tienes trabajos en curso. <button (click)="agregarTrabajo()">Agregar trabajo</button></p>
+      <p>No tienes trabajos en curso</p>
     </ng-template>
+    <button (click)="mostrarFormulario = true">Agregar Servicio</button>
 
     <h3>Trabajos ya hechos</h3>
-    <div *ngIf="trabajosHechos.length > 0; else noTrabajosHechos" class="trabajos-hechos">
-      <div class="trabajo-hecho" *ngFor="let foto of trabajosHechos">
-        <p>{{ foto.titulo }}</p>
-      </div>
-    </div>
-    <ng-template #noTrabajosHechos>
-      <p>No tienes trabajos hechos aún.</p>
-    </ng-template>
+  <div *ngIf="perfil?.imagenes?.length > 0; else noTrabajosHechos" class="trabajos-hechos">
+    <div class="trabajo-hecho" *ngFor="let imagen of perfil.imagenes">
+    <!-- Mostrar las imágenes -->
+    <img *ngIf="imagen" [src]="imagen.startsWith('data:image') ? imagen : 'data:image/png;base64,' + imagen" alt="Trabajo hecho" class="imagen-trabajo" />
+   </div>
+  </div>
+
+<ng-template #noTrabajosHechos>
+  <p>No tienes trabajos hechos aún.</p>
+</ng-template>
   </div>
 </div>
+<app-create-service
+  *ngIf="mostrarFormulario"
+  [perfil]="perfil"
+  (cancelarEvento)="cerrarFormulario()">
+</app-create-service>
