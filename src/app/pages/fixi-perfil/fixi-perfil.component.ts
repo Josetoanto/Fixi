@@ -16,7 +16,7 @@ import { FilePreviewPipe } from '../../component/previuw-file.pipe';
 @Component({
   selector: 'app-fixi-perfil',
   standalone: true,
-  imports: [NgFor, CurrencyPipe, HeaderFixiComponent,FormsModule,CommonModule,CreateServiceComponent,FilePreviewPipe],
+  imports: [NgFor, CurrencyPipe, HeaderFixiComponent,FormsModule,CommonModule,CreateServiceComponent],
   templateUrl: './fixi-perfil.component.html',
   styleUrls: ['./fixi-perfil.component.scss'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Permite elementos personalizados
@@ -117,6 +117,7 @@ export class FixiPerfilComponent implements OnInit {
   
     // Agregar datos básicos
     formData.append('nombre', this.perfil.nombre);
+    formData.append('description', this.perfil.description);
     formData.append('telefono', this.perfil.telefono);
     formData.append('habilidades', JSON.stringify(this.perfil.habilidades));
     formData.append('direccion', JSON.stringify(this.perfil.direccion));
@@ -130,11 +131,11 @@ export class FixiPerfilComponent implements OnInit {
     }
   
     // Manejar imágenes adicionales
-    if (this.perfil.imagenesArchivos?.length) {
-      this.perfil.imagenesArchivos.forEach((imagen: File) => {
-        formData.append('imagenes[]', imagen); 
-      });
-    }
+      if (this.perfil.imagenesArchivos && this.perfil.imagenesArchivos.length > 0) {
+        this.perfil.imagenesArchivos.forEach((file: File) => {
+          formData.append('imagenes', file, file.name); // Agrega cada archivo individualmente
+        });
+      }
   
     console.log(this.convertirFormDataAObjeto(formData))
     if (perfilId) {
@@ -176,8 +177,9 @@ export class FixiPerfilComponent implements OnInit {
       if (tipo === 'foto') {
         this.perfil.fotoArchivo = input.files[0]; // Foto principal
       } else if (tipo === 'imagenes') {
-        const nuevasImagenes = Array.from(input.files); // Convertir FileList a Array
-        this.perfil.imagenesArchivos = [...this.perfil.imagenesArchivos, ...nuevasImagenes]; // Agregar nuevas imágenes al array
+        console.log(input.files)
+        this.perfil.imagenesArchivos = Array.from(input.files); 
+        console.log(this.perfil.imagenesArchivos)
       }
     }
   }

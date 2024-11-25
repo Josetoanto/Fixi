@@ -13,6 +13,8 @@
       <div class="profile-info" *ngIf="!editando; else editarFormulario">
         <h2>{{ perfil?.nombre || 'Nombre no disponible' }}</h2>
         <hr />
+        <p><strong>Descripcion:</strong> {{ perfil?.description || 'No disponible' }}</p>
+
         <p><strong>Teléfono:</strong> {{ perfil?.telefono || 'No disponible' }}</p>
         <p><strong>Ciudad:</strong> {{ perfil?.direccion?.ciudad || 'No disponible' }}</p>
         <div class="habilidades">
@@ -25,8 +27,8 @@
       <ng-template #editarFormulario>
         <form (ngSubmit)="guardarCambios()">
           <div>
-            <label for="nombre">Nombre:</label>
-            <input id="nombre" type="text" [(ngModel)]="perfil.nombre" name="nombre" required />
+            <label for="nombre">Descripcion del perfil:</label>
+            <input id="nombre" type="text" [(ngModel)]="perfil.description" name="nombre" required />
           </div>
           <div>
             <label for="telefono">Teléfono:</label>
@@ -82,12 +84,6 @@
                 (change)="onFileSelected($event, 'imagenes')"
                 accept="image/*"
                 />
-                <div class="imagenes-preview">
-                  <div *ngFor="let imagen of perfil.imagenesArchivos; let i = index">
-                    <p>Imagen {{ i + 1 }}</p>
-                    <img [src]="imagen | filePreview" alt="Vista previa de la imagen" width="100" />
-                  </div>
-                </div>
               </div>
           </div>
           <div class="form-buttons">
@@ -119,14 +115,16 @@
     <button (click)="mostrarFormulario = true">Agregar Servicio</button>
 
     <h3>Trabajos ya hechos</h3>
-    <div *ngIf="trabajosHechos.length > 0; else noTrabajosHechos" class="trabajos-hechos">
-      <div class="trabajo-hecho" *ngFor="let foto of trabajosHechos">
-        <p>{{ foto }}</p>
-      </div>
-    </div>
-    <ng-template #noTrabajosHechos>
-      <p>No tienes trabajos hechos aún.</p>
-    </ng-template>
+  <div *ngIf="perfil?.imagenes?.length > 0; else noTrabajosHechos" class="trabajos-hechos">
+    <div class="trabajo-hecho" *ngFor="let imagen of perfil.imagenes">
+    <!-- Mostrar las imágenes -->
+    <img *ngIf="imagen" [src]="imagen.startsWith('data:image') ? imagen : 'data:image/png;base64,' + imagen" alt="Trabajo hecho" class="imagen-trabajo" />
+   </div>
+  </div>
+
+<ng-template #noTrabajosHechos>
+  <p>No tienes trabajos hechos aún.</p>
+</ng-template>
   </div>
 </div>
 <app-create-service

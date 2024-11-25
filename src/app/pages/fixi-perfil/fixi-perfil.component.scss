@@ -153,7 +153,7 @@
   
   .trabajos-hechos {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 16px;
   
     .trabajo-hecho {
@@ -188,5 +188,12 @@
         }
       }
     }
+  }
+  .imagen-trabajo {
+    max-width: 200px; /* Establece un tamaño máximo para el ancho */
+    max-height: 200px; /* Establece un tamaño máximo para la altura */
+    object-fit: cover; /* Mantiene la relación de aspecto, recortando si es necesario */
+    border-radius: 8px;
+    margin: 10px 0;
   }
   
