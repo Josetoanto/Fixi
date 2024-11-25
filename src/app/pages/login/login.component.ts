@@ -6,6 +6,7 @@ import { PerfilService } from '../../service/perfil.service';
 import { TokenService } from '../../service/token.service';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -38,15 +39,13 @@ export class LoginComponent {
             console.error('Rol de usuario desconocido');
         }
         if (response.perfil_id === null) {
+
           const nuevoPerfil = new FormData();
-          nuevoPerfil.append('usuarioId', response.user_id);
-          nuevoPerfil.append('nombre', "Nombre Temporal");
-          nuevoPerfil.append('tipoUsuario', response.tipo_usuario);
-          nuevoPerfil.append("habilidades", JSON.stringify(null));
-          nuevoPerfil.append('direccion', JSON.stringify(null));  // Si la dirección es nula, agregarla como JSON string
-          nuevoPerfil.append('telefono', ""); // Agregar teléfono como null
-          nuevoPerfil.append('fechaNacimiento', ""); // Fecha de nacimiento como null
           nuevoPerfil.append("description", "Descripción del perfil");
+          nuevoPerfil.append('habilidades', JSON.stringify([["Limpieza"]])); // Habilidades como array doble nulo
+          nuevoPerfil.append('direccion', JSON.stringify({ "ciudad": "Tuxtla Gutierrez", "colonia": "Centro", "avenida": "Insurgentes", "numexterior": 123, "codigopost": 12345}));  // Si la dirección es nula, agregarla como JSON string
+          nuevoPerfil.append('telefono', "Numero de telefono"); // Agregar teléfono como null
+          
 
     
           this.perfilService.createPerfil(nuevoPerfil).subscribe(

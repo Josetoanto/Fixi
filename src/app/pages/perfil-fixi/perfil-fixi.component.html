@@ -1,0 +1,51 @@
+<app-header-fixi></app-header-fixi>
+<div class="perfil-fixi-container">
+  <!-- Sección de la izquierda (Información del perfil) -->
+  <div class="perfil-izquierda">
+    <div class="profile-card">
+      <div class="profile-photo">
+        <img
+          [src]="perfil?.foto ? 'data:image/png;base64,' + perfil.foto : 'https://via.placeholder.com/150'"
+          alt="Foto de perfil"
+        />
+      </div>
+
+      <div class="profile-info">
+        <h2>{{ perfil?.nombre || 'Nombre no disponible' }}</h2>
+        <hr />
+        <p><strong>Teléfono:</strong> {{ perfil?.telefono || 'No disponible' }}</p>
+        <p>
+          <strong>Ciudad:</strong> {{ perfil?.direccion?.ciudad || 'No disponible' }}
+        </p>
+        <div class="habilidades">
+          <button *ngFor="let habilidad of perfil?.habilidades" class="habilidad">
+            {{ habilidad }}
+          </button>
+        </div>
+        <button class="edit-button" (click)="toggleEditar()">Editar perfil</button>
+      </div>
+    </div>
+    <hr />
+    <p>Reseñas: 19</p>
+    <div class="rating">
+      <i class="star" *ngFor="let star of [1, 2, 3, 4, 5]">&#9733;</i>
+    </div>
+  </div>
+
+  <!-- Sección de la derecha (Trabajos y servicios) -->
+  <div class="perfil-derecha">
+    <h3>Trabajos</h3>
+    <div class="trabajos-lista">
+      <div class="trabajo" *ngFor="let trabajo of trabajos">
+        <p>{{ trabajo.titulo }}</p>
+        <p>Total: {{ trabajo.costo | currency:'MXN' }}</p>
+      </div>
+    </div>
+    <h3>Trabajos ya hechos</h3>
+    <div class="trabajos-hechos">
+      <div class="trabajo-hecho" *ngFor="let foto of trabajosHechos">
+        <p>Fotos</p>
+      </div>
+    </div>
+  </div>
+</div>
