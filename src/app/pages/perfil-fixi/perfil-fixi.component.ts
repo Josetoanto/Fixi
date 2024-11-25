@@ -36,6 +36,9 @@ export class PerfilFixiComponent implements OnInit {
       this.perfilService.getPerfilById(perfilId).subscribe(
         (data) => {
           this.perfil = data;
+          console.log(data)
+
+          this.perfil.nombre = this.tokenService.getProfileName()
         },
         (error) => {
           console.error('Error al obtener el perfil:', error);
