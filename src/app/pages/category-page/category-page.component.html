@@ -3,6 +3,7 @@
   <h2>{{ categoria }}</h2>
   <div class="card-container">
     <div class="card" *ngFor="let servicio of servicios">
+      <a [routerLink]="['/servicio', servicio.servicio_id]">
       <div class="card-left">
         <img
           *ngIf="getPerfilFoto(servicio.proveedor_id); else sinFoto"
@@ -31,6 +32,7 @@
         </p>
         <p><strong>Proveedor ID:</strong> {{ servicio.proveedor_id }}</p>
       </div>
+    </a>
     </div>
   </div>
 </div>

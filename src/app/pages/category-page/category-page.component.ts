@@ -4,11 +4,12 @@ import { ServicioService } from '../../service/servicio.service';
 import { HeaderClientComponent } from '../../component/header-client/header-client.component';
 import { CommonModule } from '@angular/common';
 import { PerfilService } from '../../service/perfil.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-category-page',
   templateUrl: './category-page.component.html',
-  imports: [HeaderClientComponent,CommonModule],
+  imports: [HeaderClientComponent,CommonModule,RouterLink],
   standalone:true,
   styleUrls: ['./category-page.component.scss'],
 })
@@ -18,6 +19,7 @@ export class CategoryPageComponent implements OnInit {
   categoria: string = '';
 
   servicios: {
+    servicio_id: number,
     nombre: string;
     descripcion: string | null;
     tipo_servicio: string;

@@ -1,0 +1,23 @@
+<app-header-client></app-header-client>
+<div class="service-container">
+  <h1>Agendar servicio</h1>
+  <div class="service-details">
+    <div class="service-info">
+      <h2>{{ servicio?.nombre }}</h2>
+      <p><strong>Descripción:</strong> {{ servicio?.descripcion || 'No disponible' }}</p>
+      <p><strong>Tipo:</strong> {{ servicio?.tipo_servicio }}</p>
+      <p><strong>Ubicación:</strong> {{ servicio?.ubicacion }}</p>
+      <p><strong>Costo:</strong> ${{ servicio?.costo }} MXN</p>
+    </div>
+    <div class="schedule-form">
+      <h3>Agendar</h3>
+      <form>
+        <label for="fecha">Fecha</label>
+        <input id="fecha" type="date" [(ngModel)]="fecha" name="fecha" required />
+        <label for="hora">Hora</label>
+        <input id="hora" type="time" [(ngModel)]="hora" name="hora" required />
+        <button (click)="agendarServicio()">Pagar</button>
+      </form>
+    </div>
+  </div>
+</div>
