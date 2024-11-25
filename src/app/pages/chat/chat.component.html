@@ -1,0 +1,24 @@
+<app-header-fixi></app-header-fixi>
+<div class="chat-container">
+  <div class="chat-header">
+    <span class="chat-title">Fixi</span>
+    <div class="chat-icons">
+      <i class="icon material-icons">book</i>
+      <i class="icon material-icons">person</i>
+      <i class="icon material-icons">menu</i>
+    </div>
+  </div>
+
+  <div class="messages">
+    <div *ngFor="let mensaje of mensajes" class="message" [ngClass]="{'from-client': mensaje.sender === 'cliente', 'from-fixi': mensaje.sender === 'fixi'}">
+      <div class="message-text">{{ mensaje.text }}</div>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" placeholder="Escribe un mensaje..." [(ngModel)]="nuevoMensaje" />
+    <button class="send-btn" (click)="enviarMensaje()">
+      <i class="material-icons">send</i>
+    </button>
+  </div>
+</div>

@@ -13,11 +13,12 @@ import { PerfilUsuarioComponent } from './pages/perfil-usuario/perfil-usuario.co
 import { FixiHomeComponent } from './pages/fixi-home/fixi-home.component';
 import { FixiPerfilComponent } from './pages/fixi-perfil/fixi-perfil.component';
 import { HistorialComponent } from './pages/historial/historial.component';
+import { ChatComponent } from './pages/chat/chat.component';
 import { ServiceDetailsComponent } from './pages/service-details/service-details.component';
 
 export const routes: Routes = [
-    { path: '', component: HomePageComponent }, // Ruta para la página principal
-    { path: 'categoria/:categoria', component: CategoryPageComponent }, // Ruta dinámica para categorías
+    { path: '', component: HomePageComponent }, 
+    { path: 'categoria/:categoria', component: CategoryPageComponent }, 
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SingUpComponent },
   { path: 'homeClient', component: UserHomeComponent },
@@ -30,5 +31,6 @@ export const routes: Routes = [
   { path: 'perfilFixi', component: FixiPerfilComponent },
   { path: 'servicio/:id', component: ServiceDetailsComponent },
   { path: 'historial', component: HistorialComponent },
+  { path: 'chat', component: ChatComponent },
   { path: '**', component: ErrorPageComponent},
 ];

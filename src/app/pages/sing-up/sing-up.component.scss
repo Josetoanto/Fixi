@@ -22,7 +22,6 @@
     border-radius: 15px;
   }
   
-  /* Imagen de la columna (a la izquierda) */
   #mujerImg {
     margin: 50px 50px 10px;
     width: 400px;
@@ -30,20 +29,17 @@
     border-radius: 25px;
   }
   
-  /* Título */
   #tituloSesion {
     height: 30px;
     font-size: 24px;
   }
   
-  /* Textos de entrada */
   #inicioText, #tipoUsuarioText, #passwordText, #passwordTextConfirm {
     color: black;
     font-size: 13px;
     height: 5px;
   }
   
-  /* Campos de entrada */
   #email, #password, #passwordConfirm {
     width: 420px;
     height: 45px;
@@ -69,7 +65,6 @@
     background-color: #dfdfdd;
   }
   
-  /* Botón de registrarse */
   #entrarbtn {
     margin-top: 25px;
     width: 420px;
@@ -87,7 +82,6 @@
     transform: scale(1.03);
   }
   
-  /* Continuar texto */
   #continue {
     margin-left: 162px;
     font-size: 13px;
@@ -95,7 +89,6 @@
     height: 30px;
   }
   
-  /* Botón de Google */
   #googlebtn {
     width: 420px;
     height: 40px;
@@ -112,7 +105,6 @@
     background-color: #dfdfdd;
   }
   
-  /* Icono de Google */
   #googleIcon {
     height: 15px;
     width: 15px;
@@ -120,14 +112,12 @@
     position: absolute;
   }
   
-  /* Pregunta de inicio de sesión */
   #pregunta {
     margin-left: 105px;
     font-size: 13px;
     color: #9794aa;
   }
   
-  /* Botón de iniciar sesión */
   #iniciarSesion {
     font-weight: bold;
     font-size: 13px;
