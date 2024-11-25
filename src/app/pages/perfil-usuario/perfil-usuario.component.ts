@@ -39,6 +39,7 @@ export class PerfilUsuarioComponent implements OnInit {
         (data) => {
           console.log(data)
           this.perfil = data;
+          console.log(this.perfil.foto)
           this.perfilEdit = {
             ...data,
             direccion: {
@@ -58,6 +59,21 @@ export class PerfilUsuarioComponent implements OnInit {
     }
   }
 
+  onFileSelected(event: Event, tipo: string): void {
+    const input = event.target as HTMLInputElement;
+  
+    if (input.files?.length) {
+      if (tipo === 'foto') {
+        this.perfil.fotoArchivo = input.files[0]; // Foto principal
+        console.log(this.perfil.fotoArchivo)
+      } else if (tipo === 'imagenes') {
+        console.log(input.files)
+        this.perfil.imagenesArchivos = Array.from(input.files); 
+        console.log(this.perfil.imagenesArchivos)
+      }
+    }
+  }
+
   toggleEditar(): void {
     this.editando = !this.editando;
   }
@@ -65,10 +81,17 @@ export class PerfilUsuarioComponent implements OnInit {
   guardarCambios(): void {
 
     const formData = new FormData();
-    // Datos básicos
     formData.append('description', this.perfilEdit.description);
     formData.append('telefono', this.perfilEdit.telefono);
-
+    if (this.perfil.fotoArchivo) {
+      console.log("guardando")
+      console.log(this.perfil.fotoArchivo)
+      formData.append('foto', this.perfil.fotoArchivo); 
+    }
+    const perfil_id = this.tokenService.getProfileId()
+    if(perfil_id){
+    formData.append('perfil_id', perfil_id)
+    }
     // Dirección detallada
     formData.append(
       'direccion',
@@ -83,6 +106,7 @@ export class PerfilUsuarioComponent implements OnInit {
     formData.append('habilidades', JSON.stringify([[]])); // Habilidades como array doble nulo
    
 
+    
 
     // Enviar los datos al backend
     const perfilId = this.tokenService.getProfileId();
@@ -99,4 +123,5 @@ export class PerfilUsuarioComponent implements OnInit {
       );
     }
   }
+  
 }

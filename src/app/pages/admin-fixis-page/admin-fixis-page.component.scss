@@ -138,3 +138,42 @@ body {
   font-size: 1.2rem;
   cursor: pointer;
 }
+.logout {
+  display: flex;
+  align-items: center;
+}
+
+.logout-link {
+  text-decoration: none; /* Sin subrayado */
+  color: inherit; /* Mantener el color */
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espacio entre el icono y el texto */
+}
+
+.logout-link:hover {
+  color: #ff0000; /* Cambia a rojo al pasar el cursor, por ejemplo */
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  margin: 10px 0;
+}
+
+.menu-item a {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Mantén el color del texto original */
+  display: flex; /* Para alinear el icono y el texto */
+  align-items: center;
+}
+
+
+
+.menu-icon {
+  margin-right: 10px; /* Espacio entre icono y texto */
+}
