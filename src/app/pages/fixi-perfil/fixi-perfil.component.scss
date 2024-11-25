@@ -26,25 +26,52 @@
         }
       }
   
-      .profile-info {
-        margin-top: 20px;
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
   
-        h2 {
-          text-align: center;
+        label {
+          font-weight: bold;
         }
   
-        .habilidades {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
-          margin: 10px 0;
+        input,
+        textarea {
+          width: 100%;
+          padding: 5px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+        }
   
-          .habilidad {
-            padding: 5px 10px;
-            background-color: #f0f0f0;
-            border: 1px solid #ddd;
+        .form-buttons {
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
+  
+          .save-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
             border-radius: 5px;
-            font-size: 14px;
+            cursor: pointer;
+  
+            &:hover {
+              background-color: #218838;
+            }
+          }
+  
+          .cancel-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+  
+            &:hover {
+              background-color: #c82333;
+            }
           }
         }
       }
@@ -64,33 +91,100 @@
         }
       }
     }
+  }
+  .trabajo-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
   
-    .rating {
-      display: flex;
-      justify-content: center;
-      margin: 10px 0;
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
   
-      .star {
-        font-size: 20px;
-        color: gold;
-        margin: 0 2px;
+    .trabajo-header {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+    }
+  
+    .trabajo-body {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.4;
+  
+      .trabajo-item {
+        margin-bottom: 6px;
+  
+        span {
+          font-weight: bold;
+          color: #444;
+        }
       }
     }
   
-    .trabajos-lista,
-    .trabajos-hechos {
+    .trabajo-footer {
+      margin-top: 12px;
+      display: flex;
+      justify-content: flex-end;
+  
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9rem;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+  
+  .trabajos-hechos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  
+    .trabajo-hecho {
       border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 10px;
-      background-color: #fff;
+      border-radius: 8px;
+      padding: 16px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
-      .trabajo,
-      .trabajo-hecho {
-        padding: 10px 0;
-        border-bottom: 1px solid #eee;
+      p {
+        margin: 4px 0;
+      }
   
-        &:last-child {
-          border-bottom: none;
+      .trabajo-imagen {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        margin-top: 8px;
+        border-radius: 4px;
+      }
+  
+      .subir-imagen {
+        margin-top: 12px;
+  
+        label {
+          font-weight: bold;
+          margin-right: 8px;
+        }
+  
+        input[type='file'] {
+          cursor: pointer;
         }
       }
     }

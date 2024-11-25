@@ -1,0 +1,49 @@
+<div class="create-service-container">
+    <h2>Agregar Servicio</h2>
+    <form (ngSubmit)="crearServicio()">
+      <div>
+        <label for="descripcion">Descripción:</label>
+        <textarea
+          id="descripcion"
+          [(ngModel)]="servicio.descripcion"
+          name="descripcion"
+          placeholder="Describe tu servicio"
+          required
+        ></textarea>
+      </div>
+      <div>
+        <label for="costo">Costo:</label>
+        <input
+          id="costo"
+          type="number"
+          [(ngModel)]="servicio.costo"
+          name="costo"
+          placeholder="Ingresa el costo del servicio"
+          required
+        />
+      </div>
+      <div>
+        <label for="tipo-servicio">Tipo de Servicio:</label>
+        <input
+          id="tipo-servicio"
+          type="text"
+          [value]="perfil.habilidades[0]"
+          readonly
+        />
+      </div>
+      <div>
+        <label for="ubicacion">Ubicación:</label>
+        <input
+          id="ubicacion"
+          type="text"
+          [value]="perfil.direccion.ciudad"
+          readonly
+        />
+      </div>
+      <div class="form-buttons">
+        <button type="submit" class="submit-button">Crear</button>
+        <button type="button" class="cancel-button" (click)="cancelar()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  
