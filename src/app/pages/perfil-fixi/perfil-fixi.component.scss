@@ -1,83 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  line-height: 1.6;
+}
+
 .perfil-fixi-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-  
-    .perfil-izquierda {
-      width: 40%;
-      .profile-card {
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        background: #f9f9f9;
-  
-        .profile-photo {
-          text-align: center;
-          margin-bottom: 10px;
-          img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-          }
-        }
-  
-        .profile-info {
-          text-align: left;
-          .habilidades {
-            margin-top: 10px;
-            .habilidad {
-              margin: 5px;
-              padding: 5px 10px;
-              background: #e0e0e0;
-              border: none;
-              border-radius: 5px;
-              cursor: pointer;
-            }
-          }
-  
-          .edit-button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background: #4caf50;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-          }
-        }
-      }
-  
-      .rating {
-        margin-top: 10px;
-        .star {
-          font-size: 20px;
-          color: #ffc107;
-        }
-      }
-    }
-  
-    .perfil-derecha {
-      width: 55%;
-  
-      h3 {
-        margin-bottom: 10px;
-      }
-  
-      .trabajos-lista,
-      .trabajos-hechos {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-  
-        .trabajo,
-        .trabajo-hecho {
-          padding: 10px;
-          border: 1px solid #ddd;
-          border-radius: 10px;
-          background: #f9f9f9;
-          text-align: center;
-        }
-      }
-    }
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 30px;
+  flex-wrap: wrap;
+}
+
+.perfil-izquierda {
+  flex: 1;
+  min-width: 280px;
+  max-width: 45%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-photo {
+  margin-bottom: 20px;
+}
+
+.profile-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4caf50;
+}
+
+.profile-info {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.profile-info h2 {
+  font-size: 24px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.profile-info p {
+  font-size: 14px;
+  color: #777;
+  margin: 8px 0;
+}
+
+.habilidades {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.habilidad {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.habilidad:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.edit-button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+.rating {
+  margin-top: 15px;
+}
+
+.star {
+  font-size: 25px;
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.star.filled {
+  color: #ffc107;
+}
+
+.perfil-derecha {
+  flex: 1;
+  min-width: 280px;
+  max-width: 50%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-derecha h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.trabajos-lista, .trabajos-hechos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.trabajo, .trabajo-hecho {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trabajo:hover, .trabajo-hecho:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.trabajo p {
+  font-size: 14px;
+  color: #333;
+}
+
+.trabajo-hecho img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .perfil-fixi-container {
+    flex-direction: column;
   }
-  
+  .perfil-izquierda, .perfil-derecha {
+    max-width: 100%;
+  }
+  .trabajos-lista {
+    grid-template-columns: 1fr;
+  }
+}

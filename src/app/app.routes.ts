@@ -12,6 +12,7 @@ import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { PerfilUsuarioComponent } from './pages/perfil-usuario/perfil-usuario.component';
 import { FixiHomeComponent } from './pages/fixi-home/fixi-home.component';
 import { FixiPerfilComponent } from './pages/fixi-perfil/fixi-perfil.component';
+import { HistorialComponent } from './pages/historial/historial.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent }, // Ruta para la página principal
@@ -26,5 +27,6 @@ export const routes: Routes = [
   { path: 'perfil', component: PerfilUsuarioComponent },
   { path: 'homeProveedor', component: FixiHomeComponent },
   { path: 'perfilFixi', component: FixiPerfilComponent },
+  { path: 'historial', component: HistorialComponent },
   { path: '**', component: ErrorPageComponent},
 ];
