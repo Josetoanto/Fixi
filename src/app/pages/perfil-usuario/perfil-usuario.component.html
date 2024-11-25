@@ -60,11 +60,8 @@
           <input type="number" [(ngModel)]="perfilEdit.direccion.codigopost" name="codigopost" required />
         </label>
       </fieldset>
-
-      <label>
-        Foto:
-        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
-      </label>
+      
+      
 
       <button type="submit" class="save-button">Guardar</button>
       <button type="button" class="cancel-button" (click)="toggleEditar()">Cancelar</button>

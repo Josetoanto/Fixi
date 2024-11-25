@@ -1,0 +1,88 @@
+.perfil-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f4f7fa;
+  }
+  
+  .perfil-info {
+    width: 60%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .perfil-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .perfil-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .perfil-details {
+    flex-grow: 1;
+  }
+  
+  .perfil-details h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .perfil-skills {
+    margin-top: 10px;
+  }
+  
+  .skill-btn {
+    background-color: #2c8cc6;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .comentarios {
+    margin-top: 20px;
+  }
+  
+  .comentario {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 35%;
+    padding: 20px;
+  }
+  
+  .nav-button {
+    background-color: #2c8cc6;
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .nav-button:hover {
+    background-color: #1d6fa5;
+  }
+  
