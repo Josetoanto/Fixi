@@ -62,6 +62,18 @@ export class UserService {
     return !!token;
   }
 
+  // En user.service.ts
+  getProveedorIngresos(): Observable<any> {
+    const headers = this.getAuthHeaders(); // Asegurarse de que se incluya el token de autenticación
+    return this.http.get(`${this.apiUrl}/users/admin/ingresos/proveedores`, { headers }).pipe(
+      catchError((error) => {
+        console.error('Error al obtener ingresos de proveedores:', error);
+        return throwError(error);
+      })
+    );
+  }
+
+
   // Cerrar sesión
   logout(): void {
     this.tokenService.removeToken(); // Eliminar el token usando el TokenService

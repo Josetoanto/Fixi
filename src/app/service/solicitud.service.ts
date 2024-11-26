@@ -3,11 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
 
-export interface Solicitud {
-  fecha_servicio: string; // Fecha del servicio en formato ISO
-  hora: string; // Hora del servicio en formato ISO
-  servicio_id: number; // ID del servicio relacionado
-}
+
 
 export interface SolicitudCreate {
   titulo: string;
@@ -30,19 +26,19 @@ export class SolicitudService {
     });
   }
 
-  crearSolicitud(solicitud: any): Observable<Solicitud> {
-    return this.http.post<Solicitud>(`${this.apiUrl}/`, solicitud, {
+  crearSolicitud(solicitud: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/`, solicitud, {
       headers: this.getHeaders(),
     });
   }
 
-  obtenerSolicitud(solicitudId: number): Observable<Solicitud> {
-    return this.http.get<Solicitud>(`${this.apiUrl}/${solicitudId}`, {
+  obtenerSolicitud(solicitudId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${solicitudId}`, {
       headers: this.getHeaders(),
     });
   }
 
-  obtenerSolicitudes(skip: number = 0, limit: number = 20): Observable<Solicitud[]> {
+  obtenerSolicitudes(skip: number = 0, limit: number = 20): Observable<any[]> {
     if (skip < 0 || limit <= 0) {
       throw new Error('Parámetros inválidos: "skip" debe ser >= 0 y "limit" > 0');
     }
@@ -51,29 +47,29 @@ export class SolicitudService {
       .set('limit', limit.toString());
 
     const header = this.getHeaders()
-    return this.http.get<Solicitud[]>(this.apiUrl, {
+    return this.http.get<any[]>(this.apiUrl, {
       headers: header,
       params,
     });
   }
 
-  actualizarEstadoSolicitud(solicitudId: number, status: string): Observable<Solicitud> {
-    return this.http.put<Solicitud>(
-      `${this.apiUrl}/${solicitudId}/status`,
-      { status },
+  actualizarEstadoSolicitud(solicitudId: number, status: string): Observable<any> {
+    return this.http.put<any>(
+      `${this.apiUrl}/${solicitudId}/status?status=${status}`,  // status como parámetro de consulta
+      {},
       { headers: this.getHeaders() }
     );
   }
-
+  
   // Cancelar una solicitud
-  cancelarSolicitud(solicitudId: number, cancelar: boolean): Observable<Solicitud> {
+  cancelarSolicitud(solicitudId: number, cancelar: boolean): Observable<any> {
     const url = `${this.apiUrl}/${solicitudId}/cancelar?cancelar=${cancelar}`;
-    return this.http.put<Solicitud>(url, {}, { headers: this.getHeaders() });
+    return this.http.put<any>(url, {}, { headers: this.getHeaders() });
   }
 
   // Eliminar una solicitud
-  eliminarSolicitud(solicitudId: number): Observable<Solicitud> {
-    return this.http.delete<Solicitud>(`${this.apiUrl}/${solicitudId}`, {
+  eliminarSolicitud(solicitudId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${solicitudId}`, {
       headers: this.getHeaders(),
     });
   }
