@@ -1,23 +1,59 @@
 <app-header-client></app-header-client>
+
 <div class="service-container">
-  <h1>Agendar servicio</h1>
+  <h1>Detalles del Servicio</h1>
   <div class="service-details">
+    <!-- Información del Servicio -->
     <div class="service-info">
       <h2>{{ servicio?.nombre }}</h2>
       <p><strong>Descripción:</strong> {{ servicio?.descripcion || 'No disponible' }}</p>
       <p><strong>Tipo:</strong> {{ servicio?.tipo_servicio }}</p>
       <p><strong>Ubicación:</strong> {{ servicio?.ubicacion }}</p>
       <p><strong>Costo:</strong> ${{ servicio?.costo }} MXN</p>
+      <p><strong>Disponibilidad:</strong> {{ servicio?.disponibilidad ? 'Disponible' : 'No disponible' }}</p>
+      <p><strong>Pago:</strong> {{ servicio?.disponibilidadpago ? 'Disponible' : 'No disponible' }}</p>
     </div>
-    <div class="schedule-form">
-      <h3>Agendar</h3>
-      <form>
-        <label for="fecha">Fecha</label>
-        <input id="fecha" type="date" [(ngModel)]="fecha" name="fecha" required />
-        <label for="hora">Hora</label>
-        <input id="hora" type="time" [(ngModel)]="hora" name="hora" required />
-        <button (click)="agendarServicio()">Pagar</button>
-      </form>
+
+    <!-- Información del Proveedor -->
+    <div class="service-info">
+      <h3>Información del Proveedor</h3>
+      <p><strong>Nombre:</strong> {{ servicio?.proveedor?.name }}</p>
+      <p><strong>Email:</strong> {{ servicio?.proveedor?.email }}</p>
+      <p><strong>Teléfono:</strong> {{ servicio?.perfil?.telefono }}</p>
+      <p><strong>Descripción:</strong> {{ servicio?.perfil?.description || 'No disponible' }}</p>
+      <p><strong>Dirección:</strong></p>
+      <ul>
+        <li>Ciudad: {{ servicio?.perfil?.direccion?.ciudad }}</li>
+        <li>Colonia: {{ servicio?.perfil?.direccion?.colonia }}</li>
+        <li>Avenida: {{ servicio?.perfil?.direccion?.avenida }}</li>
+        <li>No. Exterior: {{ servicio?.perfil?.direccion?.numexterior }}</li>
+        <li>Código Postal: {{ servicio?.perfil?.direccion?.codigopost }}</li>
+      </ul>
+    </div>
+
+    <!-- Imagen del Proveedor -->
+    <div class="service-images">
+      <h3>Foto del Proveedor</h3>
+      <img
+        [src]="servicio?.perfil?.foto ? (servicio.perfil.foto.startsWith('data:image') ? servicio.perfil.foto : 'data:image/png;base64,' + servicio.perfil.foto) : 'https://via.placeholder.com/150'"
+        alt="Foto de perfil"
+      />
     </div>
   </div>
+
+  <!-- Agendar Servicio -->
+  <div class="schedule-form">
+    <h3>Agendar</h3>
+    <form>
+      <label for="fecha">Fecha</label>
+      <input id="fecha" type="date" [(ngModel)]="fecha" name="fecha" required />
+      <label for="hora">Hora</label>
+      <input id="hora" type="time" [(ngModel)]="hora" name="hora" required />
+      <button type="button" (click)="agendarServicio()">Pagar</button>
+    </form>
+  </div>
 </div>
+
+<ng-template #noImages>
+  <p>No hay imágenes disponibles.</p>
+</ng-template>

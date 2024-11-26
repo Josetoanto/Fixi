@@ -1,39 +1,109 @@
 .service-container {
-    padding: 20px;
-  }
-  
-  .service-details {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .service-info {
-    max-width: 60%;
-  }
-  
-  .schedule-form {
-    max-width: 35%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  button {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+h1, h2, h3 {
+  color: #1a73e8;
+}
+
+.service-details {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.service-info, .service-images, .schedule-form {
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  flex: 1 1 calc(33.333% - 20px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-info:hover, .service-images:hover, .schedule-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.service-info {
+  order: 1;
+}
+
+.service-images {
+  text-align: center;
+  order: 3;
+}
+
+.service-images img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-images img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.schedule-form {
+  order: 2;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input[type="date"], input[type="time"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="date"]:focus, input[type="time"]:focus {
+  border-color: #1a73e8;
+}
+
+button {
+  padding: 12px;
+  background-color: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background-color: #135abe;
+  box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+.service-images h3, .service-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #444;
+}

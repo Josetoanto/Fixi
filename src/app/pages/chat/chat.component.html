@@ -9,14 +9,24 @@
     </div>
   </div>
 
+  <!-- Mensajes -->
   <div class="messages">
-    <div *ngFor="let mensaje of mensajes" class="message" [ngClass]="{'from-client': mensaje.sender === 'cliente', 'from-fixi': mensaje.sender === 'fixi'}">
-      <div class="message-text">{{ mensaje.text }}</div>
+    <div
+      *ngFor="let mensaje of mensajes"
+      class="message"
+      [ngClass]="{'from-client': mensaje.emisor_id !== proveedorId, 'from-fixi': mensaje.emisor_id === proveedorId}"
+    >
+      <div class="message-text">{{ mensaje.mensaje }}</div>
     </div>
   </div>
 
+  <!-- Campo para enviar mensajes -->
   <div class="chat-input">
-    <input type="text" placeholder="Escribe un mensaje..." [(ngModel)]="nuevoMensaje" />
+    <input
+      type="text"
+      placeholder="Escribe un mensaje..."
+      [(ngModel)]="nuevoMensaje"
+    />
     <button class="send-btn" (click)="enviarMensaje()">
       <i class="material-icons">send</i>
     </button>

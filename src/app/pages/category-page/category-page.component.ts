@@ -5,6 +5,7 @@ import { HeaderClientComponent } from '../../component/header-client/header-clie
 import { CommonModule } from '@angular/common';
 import { PerfilService } from '../../service/perfil.service';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-category-page',
@@ -28,47 +29,67 @@ export class CategoryPageComponent implements OnInit {
     disponibilidad: boolean;
     proveedor_id: number;
     disponibilidadpago: boolean;
+    proveedor: any
+    foto:any
   }[] = [];
 
 
   constructor(
     private servicioService: ServicioService,
     private perfilService: PerfilService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
     this.categoria = this.route.snapshot.paramMap.get('categoria') || '';
     this.cargarServicios();
-    //this.cargarPerfiles();
   }
 
   cargarServicios(): void {
     this.servicioService.getServicios().subscribe({
       next: (data: any[]) => {
-        this.servicios = data.filter(
+        const serviciosFiltrados = data.filter(
           (servicio: any) => servicio.tipo_servicio === this.categoria
         );
+        this.servicios = serviciosFiltrados.map((servicio) => {
+          // Obtener el proveedor
+          this.userService.getUserById(servicio.proveedor_id).subscribe({
+            next: (proveedor) => {
+              servicio.proveedor = proveedor;
+
+              // Usar perfil_id del proveedor para obtener la foto
+              if (proveedor.perfil_id) {
+                this.perfilService.getPerfilById(proveedor.perfil_id).subscribe({
+                  next: (perfil) => {
+                    servicio.foto = perfil.foto; // Guardar foto en el servicio
+                  },
+                  error: (error) => {
+                    console.error(
+                      `Error al obtener el perfil con ID ${proveedor.perfil_id}:`,
+                      error
+                    );
+                  },
+                });
+              }
+            },
+            error: (error) => {
+              console.error(
+                `Error al obtener el proveedor con ID ${servicio.proveedor_id}:`,
+                error
+              );
+            },
+          });
+          return servicio;
+        });
+        console.log(this.servicios)
       },
       error: (error) => {
         console.error('Error al cargar los servicios:', error);
       },
     });
   }
-  cargarPerfiles(): void {
-    this.perfilService.getAllPerfiles().subscribe({
-      next: (data: any) => {
-        console.log(data)
-        this.perfiles = data;
-      },
-      error: (error) => {
-        console.error('Error al cargar los perfiles:', error);
-      },
-    });
-  }
+  
 
-  getPerfilFoto(proveedorId: number): string | null {
-    const perfil = this.perfiles.find((p: any) => p.profileId === proveedorId);
-    return perfil ? perfil.foto : null;
-  }
+ 
 }

@@ -6,11 +6,9 @@
       <a [routerLink]="['/servicio', servicio.servicio_id]">
       <div class="card-left">
         <img
-          *ngIf="getPerfilFoto(servicio.proveedor_id); else sinFoto"
-          [src]="perfil?.foto ? (perfil.foto.startsWith('data:image') ? perfil.foto : 'data:image/png;base64,' + perfil.foto) : 'https://via.placeholder.com/150'"
+          [src]="servicio?.foto ? (servicio.foto.startsWith('data:image') ? servicio.foto : 'data:image/png;base64,' + servicio.foto) : 'https://via.placeholder.com/150'"
           alt="Foto de perfil"
         />
-       
         <ng-template #sinFoto>
           <img src="https://via.placeholder.com/100" alt="Sin foto" />
         </ng-template>
