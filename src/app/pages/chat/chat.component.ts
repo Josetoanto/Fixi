@@ -19,7 +19,7 @@ export class ChatComponent implements OnInit {
   proveedorId: number | null = null; // ID del proveedor asociado al chat
   mensajes: Chat[] = []; // Lista de mensajes cargados desde la API
 
-  constructor(private route: ActivatedRoute, private chatService: ChatService, private tokenService:TokenService) {}
+  constructor(private route: ActivatedRoute, private chatService: ChatService, public tokenService:TokenService) {}
 
   ngOnInit(): void {
     // Obtén el ID del proveedor desde los parámetros de la ruta
@@ -28,7 +28,10 @@ export class ChatComponent implements OnInit {
       if (this.proveedorId) {
         this.obtenerMensajes(); // Carga los mensajes si hay un proveedorId válido
       }
+    
     });
+    console.log(this.proveedorId)
+    console.log(this.tokenService.getId())
   }
 
   /**
@@ -37,10 +40,8 @@ export class ChatComponent implements OnInit {
   obtenerMensajes(): void {
     this.chatService.getUserChats().subscribe({
       next: (mensajes) => {
-        this.mensajes = mensajes.filter(
-          (msg) => msg.resepto_id === this.proveedorId || msg.emisor_id === this.tokenService.getId()
-        );
-        console.log(this.mensajes)
+        this.mensajes = mensajes
+        console.log(mensajes)
       },
       error: (err) => {
         console.error('Error al obtener mensajes:', err);

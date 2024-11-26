@@ -14,11 +14,15 @@
     <div
       *ngFor="let mensaje of mensajes"
       class="message"
-      [ngClass]="{'from-client': mensaje.emisor_id !== proveedorId, 'from-fixi': mensaje.emisor_id === proveedorId}"
+      [ngClass]="{
+        'from-client': mensaje.emisor_id !== proveedorId && mensaje.emisor_id === tokenService.getId(),
+        'from-fixi': mensaje.emisor_id === proveedorId || mensaje.emisor_id !== tokenService.getId()
+      }"
     >
       <div class="message-text">{{ mensaje.mensaje }}</div>
     </div>
   </div>
+  
 
   <!-- Campo para enviar mensajes -->
   <div class="chat-input">

@@ -1,0 +1,57 @@
+<app-header-fixi></app-header-fixi>
+<div class="servicios-container">
+  <h2>Tu historial</h2>
+
+  <!-- Mostrar mensaje de carga -->
+  <div *ngIf="loading" class="loading">Cargando solicitudes...</div>
+
+  <!-- Mostrar mensaje de error -->
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <!-- Mostrar lista vacía -->
+  <div *ngIf="!loading && solicitudes.length === 0" class="empty">
+    <img src="assets/no-servicios.png" alt="Sin solicitudes" />
+    <p>Parece que no tienes solicitudes registradas.</p>
+  </div>
+
+  <!-- Mostrar lista de solicitudes -->
+  <ul *ngIf="solicitudes.length > 0" class="solicitudes-list">
+    <li *ngFor="let solicitud of solicitudes" class="solicitud-item">
+      <h3>Solicitud ID: {{ solicitud.solicitud_id }}</h3>
+      <p><strong>Costo:</strong> ${{ solicitud.costo }}</p>
+      <p><strong>Status:</strong> {{ solicitud.status }}</p>
+      <p><strong>Cancelado:</strong> {{ solicitud.cancelado ? 'Sí' : 'No' }}</p>
+      <p><strong>Fecha de creación:</strong>{{ solicitud.fecha | date: 'shortDate' }}</p>
+      <p><strong>Fecha del servicio:</strong>{{ solicitud.fecha_servicio | date: 'shortDate' }}</p>
+      <p><strong>Hora:</strong>{{ solicitud.hora }}</p>
+
+      <!-- Información del perfil del usuario -->
+      <div class="perfil-usuario" *ngIf="solicitud.perfil">
+        <p><strong>Nombre:</strong> {{ solicitud.name }}</p>
+        <p><strong>Email:</strong> {{ solicitud.email }}</p>
+        <p><strong>Teléfono:</strong> {{ solicitud.perfil.telefono }}</p>
+        <p><strong>Dirección:</strong> {{ solicitud.perfil.direccion.ciudad }}, {{ solicitud.perfil.direccion.colonia }}</p>
+      </div>
+
+      <!-- Botones de Aceptar y Finalizar -->
+      <button *ngIf="solicitud.status === 'PENDIENTE'" (click)="aceptarSolicitud(solicitud.solicitud_id)" class="aceptar-btn">
+        Aceptar
+      </button>
+
+      <button *ngIf="solicitud.status === 'ACEPTADO' && solicitud.pagado === true" (click)="finalizarSolicitud(solicitud.solicitud_id)" class="finalizar-btn">
+        Finalizar
+      </button>
+
+      <!-- Botón de chat -->
+      <button *ngIf="!solicitud.cancelado" class="chat-btn" (click)="iniciarChat(solicitud.chatId)">Chat</button>
+
+      <!-- Botón de cancelar -->
+      <button *ngIf="!solicitud.cancelado" (click)="cancelarSolicitud(solicitud.solicitud_id)" class="cancelar-btn">
+        Cancelar
+      </button>
+      <p *ngIf="solicitud.cancelado" class="cancelled-text">
+        Esta solicitud ha sido cancelada.
+      </p>
+    </li>
+  </ul>
+</div>

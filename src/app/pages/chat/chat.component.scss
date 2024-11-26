@@ -42,20 +42,27 @@
 }
 
 .message {
-  padding: 10px 15px;
-  border-radius: 15px;
-  max-width: 70%;
-  word-wrap: break-word;
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
 }
 
 .from-client {
-  background-color: #d1e7ff;
-  align-self: flex-end;
+  align-self: flex-end;  /* Alinea los mensajes del cliente a la derecha */
+  background-color: #d3f8e2; /* Cambia el color de fondo si lo deseas */
+  text-align: right;
 }
 
 .from-fixi {
-  background-color: #ffe8a1;
-  align-self: flex-start;
+  align-self: flex-start; /* Alinea los mensajes del proveedor a la izquierda */
+  background-color: #f1f1f1; /* Cambia el color de fondo si lo deseas */
+  text-align: left;
+}
+
+.message-text {
+  word-wrap: break-word;
 }
 
 /* Input del chat */
