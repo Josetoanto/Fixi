@@ -4,12 +4,9 @@ import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
 
 export interface Solicitud {
-  id: number;
-  titulo: string;
-  descripcion: string;
-  status: string;
-  cancelado: boolean;
-  fecha_creacion: string;
+  fecha_servicio: string; // Fecha del servicio en formato ISO
+  hora: string; // Hora del servicio en formato ISO
+  servicio_id: number; // ID del servicio relacionado
 }
 
 export interface SolicitudCreate {
@@ -33,7 +30,7 @@ export class SolicitudService {
     });
   }
 
-  crearSolicitud(solicitud: SolicitudCreate): Observable<Solicitud> {
+  crearSolicitud(solicitud: any): Observable<Solicitud> {
     return this.http.post<Solicitud>(`${this.apiUrl}/`, solicitud, {
       headers: this.getHeaders(),
     });
@@ -45,7 +42,7 @@ export class SolicitudService {
     });
   }
 
-  obtenerSolicitudes(skip: number = 0, limit: number = 10): Observable<Solicitud[]> {
+  obtenerSolicitudes(skip: number = 0, limit: number = 20): Observable<Solicitud[]> {
     if (skip < 0 || limit <= 0) {
       throw new Error('Parámetros inválidos: "skip" debe ser >= 0 y "limit" > 0');
     }
@@ -70,11 +67,8 @@ export class SolicitudService {
 
   // Cancelar una solicitud
   cancelarSolicitud(solicitudId: number, cancelar: boolean): Observable<Solicitud> {
-    return this.http.put<Solicitud>(
-      `${this.apiUrl}/${solicitudId}/cancelar`,
-      { cancelar },
-      { headers: this.getHeaders() }
-    );
+    const url = `${this.apiUrl}/${solicitudId}/cancelar?cancelar=${cancelar}`;
+    return this.http.put<Solicitud>(url, {}, { headers: this.getHeaders() });
   }
 
   // Eliminar una solicitud

@@ -29,6 +29,17 @@ export class UserService {
     );
   }
 
+  getUserById(userId: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.get(`${this.apiUrl}/users/${userId}`, { headers }).pipe(
+      catchError((error) => {
+        console.error(`Error al obtener el usuario con ID ${userId}:`, error);
+        return throwError(error);
+      })
+    );
+  }
+  
+
   // Iniciar sesión
   login(email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/token`, { email, password }).pipe(

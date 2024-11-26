@@ -8,7 +8,7 @@ import { TokenService } from './token.service'; // Importa el TokenService
   providedIn: 'root',
 })
 export class PerfilService {
-  private baseUrl = 'https://fixiapi.integrador.xyz/perfil'; // Cambia por tu URL base
+  private baseUrl = 'https://fixiapi.integrador.xyz/perfil';
 
   constructor(private http: HttpClient,private tokenService: TokenService) {}
 
@@ -44,7 +44,7 @@ export class PerfilService {
   }
 
   private getAuthHeaders(): HttpHeaders {
-    const token = this.tokenService.getToken().value; // Cambia esto para obtener el token de tu sistema
+    const token = this.tokenService.getToken().value; 
     console.log(token)
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,
