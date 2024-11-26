@@ -1,6 +1,6 @@
 <app-header-fixi></app-header-fixi>
 <div class="servicios-container">
-  <h2>Tu historial</h2>
+  <h2>Tu solicitudes</h2>
 
   <!-- Mostrar mensaje de carga -->
   <div *ngIf="loading" class="loading">Cargando solicitudes...</div>
@@ -15,9 +15,9 @@
   </div>
 
   <!-- Mostrar lista de solicitudes -->
-  <ul *ngIf="solicitudes.length > 0" class="solicitudes-list">
-    <li *ngFor="let solicitud of solicitudes" class="solicitud-item">
-      <h3>Solicitud ID: {{ solicitud.solicitud_id }}</h3>
+  <div *ngIf="solicitudes.length > 0" class="solicitudes-grid">
+    <div *ngFor="let solicitud of solicitudes" class="solicitud-item">
+      <h3>Solicitud:</h3>
       <p><strong>Costo:</strong> ${{ solicitud.costo }}</p>
       <p><strong>Status:</strong> {{ solicitud.status }}</p>
       <p><strong>Cancelado:</strong> {{ solicitud.cancelado ? 'Sí' : 'No' }}</p>
@@ -31,6 +31,11 @@
         <p><strong>Email:</strong> {{ solicitud.email }}</p>
         <p><strong>Teléfono:</strong> {{ solicitud.perfil.telefono }}</p>
         <p><strong>Dirección:</strong> {{ solicitud.perfil.direccion.ciudad }}, {{ solicitud.perfil.direccion.colonia }}</p>
+      </div>
+
+      <!-- Información de pago -->
+      <div *ngIf="solicitud.pagado">
+        <p><strong>Pagado:</strong> Sí</p>
       </div>
 
       <!-- Botones de Aceptar y Finalizar -->
@@ -52,6 +57,6 @@
       <p *ngIf="solicitud.cancelado" class="cancelled-text">
         Esta solicitud ha sido cancelada.
       </p>
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>

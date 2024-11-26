@@ -46,7 +46,7 @@ export class HistorialService {
    * @param skip Número de elementos a saltar.
    * @param limit Número máximo de elementos a obtener.
    */
-  getHistoriales(skip: number = 0, limit: number = 10): Observable<Historial[]> {
+  getHistoriales(skip: number = 0, limit: number = 100): Observable<Historial[]> {
     return this.http.get<Historial[]>(`${this.apiUrl}/?skip=${skip}&limit=${limit}`);
   }
 

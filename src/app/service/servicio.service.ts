@@ -35,7 +35,7 @@ export class ServicioService {
   }
 
   // Obtener la lista de servicios
-  getServicios(skip: number = 0, limit: number = 10): Observable<any> {
+  getServicios(skip: number = 0, limit: number = 100): Observable<any> {
     const headers = this.getAuthHeaders();
     return this.http
       .get(`${this.apiUrl}/servicios?skip=${skip}&limit=${limit}`, { headers })

@@ -1,37 +1,42 @@
 <app-header-client></app-header-client>
 <div class="container">
-  <h2>{{ categoria }}</h2>
+  <!-- Contador de proveedores -->
+  <div class="provider-counter">
+    <p>
+      <strong>Servicios disponibles: </strong>
+      {{ servicios.length }}
+    </p>
+  </div>
+
+  <!-- Título de la categoría -->
+  <h2 class="category-title">{{ categoria }}</h2>
+
+  <!-- Contenedor de las tarjetas -->
   <div class="card-container">
     <div class="card" *ngFor="let servicio of servicios">
-      <a [routerLink]="['/servicio', servicio.servicio_id]">
-      <div class="card-left">
-        <img
-          [src]="servicio?.foto ? (servicio.foto.startsWith('data:image') ? servicio.foto : 'data:image/png;base64,' + servicio.foto) : 'https://via.placeholder.com/150'"
-          alt="Foto de perfil"
-        />
-       
-        <ng-template #sinFoto>
-          <img src="https://via.placeholder.com/100" alt="Sin foto" />
-        </ng-template>
-      </div>
-      <div class="card-content">
-        <h3>{{ servicio.nombre }}</h3>
-        <p><strong>Descripción:</strong> {{ servicio.descripcion || 'No disponible' }}</p>
-        <p><strong>Ubicación:</strong> {{ servicio.ubicacion }}</p>
-        <p><strong>Costo:</strong> {{ servicio.costo | currency }}</p>
-        <p>
-          <strong>Disponibilidad:</strong>
-          <span *ngIf="servicio.disponibilidad; else noDisponible">Disponible</span>
-          <ng-template #noDisponible>No disponible</ng-template>
-        </p>
-        <p>
-          <strong>Pago disponible:</strong>
-          <span *ngIf="servicio.disponibilidadpago; else pagoNoDisponible">Sí</span>
-          <ng-template #pagoNoDisponible>No</ng-template>
-        </p>
-        <p><strong>Proveedor ID:</strong> {{ servicio.proveedor_id }}</p>
-      </div>
-    </a>
+      <a [routerLink]="['/servicio', servicio.servicio_id]" class="card-link">
+        <div class="card-left">
+          <img
+            [src]="servicio?.foto ? (servicio.foto.startsWith('data:image') ? servicio.foto : 'data:image/png;base64,' + servicio.foto) : 'https://via.placeholder.com/150'"
+            alt="Foto de perfil"
+          />
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">{{ servicio.nombre }}</h3>
+          <p class="card-description"><strong>Descripción:</strong> {{ servicio.descripcion || 'No disponible' }}</p>
+          <p class="card-location"><strong>Ubicación:</strong> {{ servicio.ubicacion }}</p>
+          <p class="card-cost"><strong>Costo:</strong> {{ servicio.costo | currency }}</p>
+          <p class="card-availability">
+            <strong>Disponibilidad:</strong>
+            <span *ngIf="servicio.disponibilidad; else noDisponible">Disponible</span>
+            <ng-template #noDisponible>No disponible</ng-template>
+          </p>
+          <p class="card-payment">
+            
+            <ng-template #pagoNoDisponible>No</ng-template>
+          </p>
+        </div>
+      </a>
     </div>
   </div>
 </div>

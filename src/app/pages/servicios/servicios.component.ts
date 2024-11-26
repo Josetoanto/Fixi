@@ -45,7 +45,7 @@ export class ServiciosComponent implements AfterViewInit {
   ) {}
 
   obtenerSolicitudes(): void {
-    this.solicitudService.obtenerSolicitudes(0, 20).subscribe({
+    this.solicitudService.obtenerSolicitudes(0, 100).subscribe({
       next: (data) => {
         // Filtrar solicitudes canceladas y ordenar por fecha
         this.solicitudes = data

@@ -3,6 +3,8 @@ import { PerfilService } from '../../service/perfil.service';
 import { TokenService } from '../../service/token.service';
 import { HeaderFixiComponent } from '../../component/header-fixi/header-fixi.component';
 import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-fixi-home',
@@ -15,7 +17,8 @@ export class FixiHomeComponent {
   perfil: any = null; // Información del perfil
   constructor(
     private perfilService: PerfilService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router: Router
   ) {
   }
 
@@ -38,5 +41,17 @@ export class FixiHomeComponent {
     } else {
       console.warn('No se encontró un ID de perfil en el token.');
     }
+  }
+  irAServicios() {
+    this.router.navigate(['/serviciosFixi']);
+  }
+
+  // Función para navegar a "Perfil"
+  irAPerfil() {
+    this.router.navigate(['/perfilFixi']);
+  }
+
+  irAHistorial() {
+    this.router.navigate(['/historial']);
   }
 }

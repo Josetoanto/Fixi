@@ -88,7 +88,7 @@ export class UserService {
     });
   }
   // Obtener usuarios con paginación
-  getUsers(skip: number = 0, limit: number = 50): Observable<any> {
+  getUsers(skip: number = 0, limit: number = 100): Observable<any> {
     const headers = this.getAuthHeaders();
     return this.http.get(`${this.apiUrl}/users?skip=${skip}&limit=${limit}`, { headers }).pipe(
       catchError((error) => {

@@ -1,55 +1,102 @@
+/* Centrado y diseño del contenedor */
 .create-service-container {
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    background: white;
-    max-width: 400px;
-    margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: white;
+  max-width: 400px;
+  width: 100%; /* Asegura que el contenedor se ajuste al ancho disponible */
+  position: absolute;
+  top: 50%; /* Posiciona el contenedor al 50% de la altura de la pantalla */
+  left: 50%; /* Posiciona el contenedor al 50% del ancho de la pantalla */
+  transform: translate(-50%, -50%); /* Ajusta el contenedor para que se centre exactamente */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título del formulario */
+.create-service-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Estilo de los inputs y textarea */
+.create-service-container form div {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.create-service-container form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.create-service-container form input,
+.create-service-container form textarea,
+.create-service-container form select {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Estilo de los botones */
+.create-service-container .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.create-service-container .submit-button,
+.create-service-container .cancel-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 48%; /* Hacemos los botones un poco más pequeños para que no se toquen */
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.create-service-container .submit-button {
+  background-color: #2b4c32; /* Color solicitado */
+  color: white;
+  border: none;
+}
+
+.create-service-container .submit-button:hover {
+  background-color: #1f3a27; /* Un tono más oscuro al pasar el cursor */
+}
+
+.create-service-container .cancel-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.create-service-container .cancel-button:hover {
+  background-color: #d32f2f; /* Un tono más oscuro al pasar el cursor */
+}
+
+/* Asegurar que el formulario se vea bien en dispositivos pequeños */
+@media (max-width: 480px) {
+  .create-service-container {
+    max-width: 90%; /* Ajustamos el tamaño en pantallas pequeñas */
+    margin: 20px auto;
   }
-  
-  .create-service-container h2 {
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  .create-service-container form div {
-    margin-bottom: 15px;
-  }
-  
-  .create-service-container form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .create-service-container form input,
-  .create-service-container form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
+
   .create-service-container .form-buttons {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Los botones estarán uno debajo del otro en pantallas pequeñas */
   }
-  
-  .create-service-container .submit-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+
+  .create-service-container .submit-button,
   .create-service-container .cancel-button {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
   }
-  
+}

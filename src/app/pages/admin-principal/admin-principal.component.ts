@@ -24,7 +24,7 @@ export class AdminPrincipalComponent {
 
   loadUsers(): void {
     this.isLoading = true; // Iniciar carga
-    this.userService.getUsers(0, 20).subscribe(
+    this.userService.getUsers(0, 100).subscribe(
       (users) => {
         console.log(users);
         this.usuariosActivos = users.filter(

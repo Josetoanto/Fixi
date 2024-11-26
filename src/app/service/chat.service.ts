@@ -35,7 +35,7 @@ export class ChatService {
    * @param limit Límite de resultados a obtener (paginación).
    * @returns Observable con la lista de chats.
    */
-  getUserChats(skip: number = 0, limit: number = 10): Observable<Chat[]> {
+  getUserChats(skip: number = 0, limit: number = 100): Observable<Chat[]> {
     const url = `${this.apiUrl}/?skip=${skip}&limit=${limit}`;
     return this.http.get<Chat[]>(url, { headers: this.getHeaders() });
   }

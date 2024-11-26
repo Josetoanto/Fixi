@@ -26,7 +26,7 @@ export class PagoService {
   }
 
   // Obtener todos los pagos con paginación
-  getPagos(skip: number = 0, limit: number = 10): Observable<any[]> {
+  getPagos(skip: number = 0, limit: number = 100): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/?skip=${skip}&limit=${limit}`, {
       headers: this.getAuthHeaders(),
     });

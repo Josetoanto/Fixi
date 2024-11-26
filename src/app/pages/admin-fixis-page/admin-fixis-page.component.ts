@@ -20,7 +20,7 @@ export class AdminFixisPageComponent {
   }
 
   loadUsers() {
-    this.userService.getUsers(0,50).subscribe({
+    this.userService.getUsers(0,100).subscribe({
       next: (data: any[]) => {
         this.users = data.filter(user => user.tipo_usuario === 'Proveedor');
       },

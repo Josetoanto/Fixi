@@ -2,15 +2,14 @@
   margin: 20px;
   font-family: 'Arial', sans-serif;
   color: #333;
-  position: relative; 
+  position: relative;
 }
-
 
 .provider-counter {
   position: absolute;
-  top: 5px;
+  top: 10px; 
   right: 20px;
-  background-color: #2b4c32;
+  background-color: #28a745;
   color: white;
   padding: 10px 20px;
   border-radius: 8px;
@@ -24,21 +23,19 @@
   font-size: 16px;
 }
 
-
 .category-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: left;
-  color:#2b4c32;
+  color: #28a745;
 }
-
 
 .card-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .card {
@@ -53,7 +50,7 @@
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); 
 }
 
 .card-left {
@@ -86,23 +83,36 @@
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #2b4c32;
-}
-.perfil-foto {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-top: 10px;
+  color: #007bff;
 }
 
-.card a {
+.card-description,
+.card-location,
+.card-cost,
+.card-availability,
+.card-payment,
+.card-provider {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.card-description strong,
+.card-location strong,
+.card-cost strong,
+.card-availability strong,
+.card-payment strong,
+.card-provider strong {
+  color: #000;
+}
+
+.card-link {
   text-decoration: none;
   color: inherit;
 }
 
 .card-link:hover {
-  color: #000000;
+  color:#28a745;
 }
 
 .card-container .card + .card {

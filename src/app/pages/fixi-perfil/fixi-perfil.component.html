@@ -94,33 +94,39 @@
       </ng-template>
     </div>
     <hr />
-    <p>Reseñas: 19</p>
-    <div class="rating">
-      <i class="star" *ngFor="let star of [1, 2, 3, 4, 5]">&#9733;</i>
-    </div>
+    
   </div>
 
   <!-- Sección derecha -->
-  <div class="perfil-derecha">
-    <h3>Servicios</h3>
-    <div *ngIf="trabajos.length > 0; else noTrabajos" class="trabajos-lista">
-      <div class="trabajo" *ngFor="let trabajo of trabajos">
-        <p>{{ trabajo.descripcion }}</p>
-        <p>Total: {{ trabajo.costo | currency: 'MXN' }}</p>
-      </div>
+  <!-- Agregar Servicio -->
+<div class="perfil-derecha">
+  <h3 class="section-title">Servicios</h3>
+  <div *ngIf="trabajos.length > 0; else noTrabajos" class="trabajos-lista">
+    <div class="trabajo" *ngFor="let trabajo of trabajos">
+      <p class="trabajo-descripcion">{{ trabajo.descripcion }}</p>
+      <p class="trabajo-costo">Costo: <strong>{{ trabajo.costo | currency: 'MXN' }}</strong></p>
     </div>
-    <ng-template #noTrabajos>
-      <p>No tienes trabajos en curso</p>
-    </ng-template>
-    <button (click)="mostrarFormulario = true">Agregar Servicio</button>
+  </div>
+  <ng-template #noTrabajos>
+    <p class="mensaje-vacio">No tienes trabajos en curso</p>
+  </ng-template>
+  <button class="add-service-btn" (click)="mostrarFormulario = true">Agregar Servicio</button>
 
-    <h3>Trabajos ya hechos</h3>
+  <!-- Trabajos ya hechos -->
+  <h3 class="section-title">Trabajos ya hechos</h3>
   <div *ngIf="perfil?.imagenes?.length > 0; else noTrabajosHechos" class="trabajos-hechos">
     <div class="trabajo-hecho" *ngFor="let imagen of perfil.imagenes">
-    <!-- Mostrar las imágenes -->
-    <img *ngIf="imagen" [src]="imagen.startsWith('data:image') ? imagen : 'data:image/png;base64,' + imagen" alt="Trabajo hecho" class="imagen-trabajo" />
-   </div>
+      <img
+        *ngIf="imagen"
+        [src]="imagen.startsWith('data:image') ? imagen : 'data:image/png;base64,' + imagen"
+        alt="Trabajo hecho"
+        class="imagen-trabajo"
+      />
+    </div>
   </div>
+  <ng-template #noTrabajosHechos>
+    <p class="mensaje-vacio">No tienes trabajos hechos aún.</p>
+  </ng-template>
 
 <ng-template #noTrabajosHechos>
   <p>No tienes trabajos hechos aún.</p>

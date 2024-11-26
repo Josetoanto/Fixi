@@ -1,37 +1,45 @@
 <app-header-fixi></app-header-fixi>
 
-<div class="perfil-container">
-  <div class="perfil-info">
+<div class="main-container">
+  <div class="perfil-container">
     <div class="perfil-header">
-      <img
-        [src]="perfil?.foto || 'assets/default-avatar.jpg'"
-        alt="Imagen del perfil"
-        class="perfil-image"
-      />
-      <div class="perfil-details">
-        <h2>{{ perfil?.nombre || 'Nombre no disponible' }}</h2>
-        <p><strong>Teléfono:</strong> {{ perfil?.telefono || 'No disponible' }}</p>
-        <p><strong>Ciudad:</strong> {{ perfil?.direccion?.ciudad || 'No disponible' }}</p>
-        <div class="perfil-skills">
-          <button *ngFor="let habilidad of perfil?.habilidades" class="skill-btn">
-            {{ habilidad }}
-          </button>
-        </div>
+      <div class="perfil-image-container">
+        <img
+          [src]="perfil?.foto || 'assets/default-avatar.jpg'"
+          alt="Imagen del perfil"
+          class="perfil-image"
+        />
+        <button (click)="irAPerfil()" class="edit-button">
+          ✏️
+
+        </button>
+      </div>
+      <h2 class="perfil-name">{{ perfil?.nombre || 'Nombre no disponible' }}</h2>
+    </div>
+
+    <div class="perfil-info">
+      <p><strong>Nombre:</strong> {{ perfil?.nombre || 'No disponible' }}</p>
+      <p><strong>Teléfono:</strong> {{ perfil?.telefono || 'No disponible' }}</p>
+      <p><strong>Ciudad:</strong> {{ perfil?.direccion?.ciudad || 'No disponible' }}</p>
+      <p><strong>Colonia:</strong> {{ perfil?.direccion?.colonia || 'No disponible' }}</p>
+      <p><strong>Codigo Postal:</strong> {{ perfil?.direccion?.codigopost || 'No disponible' }}</p>
+      <p><strong>Numero exterior:</strong> {{ perfil?.direccion?.numexterior || 'No disponible' }}</p>
+
+      <div class="perfil-skills">
+        <button *ngFor="let habilidad of perfil?.habilidades" class="skill-btn">
+          {{ habilidad }}
+        </button>
       </div>
     </div>
 
-    <div class="comentarios">
-      <h3>Últimos comentarios</h3>
-      <div *ngFor="let comentario of perfil?.comentarios" class="comentario">
-        <p>{{ comentario }}</p>
-      </div>
-    </div>
+    
+
+    
   </div>
 
   <div class="button-container">
-    <button class="nav-button" routerLink="/servicios">Servicios</button>
-    <button class="nav-button" routerLink="/perfil">Perfil</button>
-    <button class="nav-button" routerLink="/historial">Historial</button>
+    <button class="nav-button" (click)="irAServicios()">Servicios</button>
+    <button class="nav-button" (click)="irAPerfil()">Perfil</button>
+    <button class="nav-button" (click)="irAHistorial()">Historial</button>
   </div>
 </div>
-

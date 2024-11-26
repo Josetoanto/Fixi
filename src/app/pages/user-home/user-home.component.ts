@@ -14,16 +14,30 @@ import { RouterModule } from '@angular/router';
 })
 export class UserHomeComponent implements AfterViewInit {
   cards = [
-    { title: 'Limpieza', imageUrl: 'limpieza.jpg', fixisAvailable: 0, minPrice: 50 },
-    { title: 'Jardinería', imageUrl: 'jardineria.jpg', fixisAvailable: 0, minPrice: 75 },
-    { title: 'Electricidad', imageUrl: 'electricidad.jpeg', fixisAvailable: 0, minPrice: 100 },
-    { title: 'Fontanería', imageUrl: 'fontaneria.jpeg', fixisAvailable: 0, minPrice: 80 },
-    { title: 'Pintura', imageUrl: 'pintura.jpeg', fixisAvailable: 0, minPrice: 120 },
+    { title: 'Limpieza', imageUrl: 'limpieza.jpg', fixisAvailable: 0, minPrice: 123 },
+    { title: 'Jardinería', imageUrl: 'jardineria.jpg', fixisAvailable: 0, minPrice: 100 },
+    { title: 'Electricidad', imageUrl: 'electricidad.jpeg', fixisAvailable: 0, minPrice: 105 },
+    { title: 'Fontanería', imageUrl: 'fontaneria.jpeg', fixisAvailable: 0, minPrice: 200 },
+    { title: 'Pintura', imageUrl: 'pintura.jpeg', fixisAvailable: 0, minPrice: 5000 },
     { title: 'Montaje de muebles', imageUrl: 'motajeMueble.jpeg', fixisAvailable: 0, minPrice: 65 },
-    { title: 'Albañilería', imageUrl: 'albanileria.jpeg', fixisAvailable: 0, minPrice: 90 },
-    { title: 'Mudanza', imageUrl: 'mudanza.jpeg', fixisAvailable: 0, minPrice: 150 },
-    { title: 'Carpintería', imageUrl: 'carpinteria.jpeg', fixisAvailable: 0, minPrice: 110 }
+    { title: 'Construccion', imageUrl: 'albanileria.jpeg', fixisAvailable: 0, minPrice: 90 },
+    { title: 'Mudanza', imageUrl: 'mudanza.jpeg', fixisAvailable: 0, minPrice: 1234 },
+    { title: 'Carpintería', imageUrl: 'carpinteria.jpeg', fixisAvailable: 0, minPrice: 500 }
 ];
+
+profesiones: string[] = [
+  'Limpieza',
+  'Jardinería',
+  'Electricidad',
+  'Fontanería',
+  'Pintura',
+  'Montaje de muebles',
+  'Construccion',
+  'Mudanza',
+  'Carpintería'
+];
+
+
   constructor(private servicioService: ServicioService) {}
 
   ngAfterViewInit(): void {
@@ -34,6 +48,7 @@ export class UserHomeComponent implements AfterViewInit {
     console.log("Obteniendo servicios");
     this.servicioService.getServicios().subscribe({
       next: (response) => {
+        console.log(response)
         console.log(response)
         this.updateFixisAvailable(response);
       },

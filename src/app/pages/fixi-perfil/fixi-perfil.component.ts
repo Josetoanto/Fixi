@@ -82,7 +82,7 @@ export class FixiPerfilComponent implements OnInit {
   
     if (proveedorId) {
       // Llamada al servicio para obtener los servicios
-      this.servicioService.getServicios(0, 10).subscribe(
+      this.servicioService.getServicios(0, 100).subscribe(
         (data: Servicio[]) => { // Definimos que 'data' es un array de tipo Servicio
           // Filtrar los servicios para obtener solo los asociados al proveedor logueado
           const serviciosProveedor = data.filter((servicio: Servicio) => servicio.proveedor_id === proveedorId);
@@ -145,6 +145,7 @@ export class FixiPerfilComponent implements OnInit {
           console.log('Perfil actualizado:', response);
           this.perfil = response;
           this.toggleEditar();
+          window.location.reload();
         },
         (error) => {
           console.error('Error al actualizar el perfil:', error);
@@ -187,8 +188,6 @@ export class FixiPerfilComponent implements OnInit {
   
   
 
-  agregarTrabajo(): void {
-    // Método para agregar trabajos futuros.
-  }
+
   
 }

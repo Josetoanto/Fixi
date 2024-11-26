@@ -38,7 +38,7 @@ export class SolicitudService {
     });
   }
 
-  obtenerSolicitudes(skip: number = 0, limit: number = 20): Observable<any[]> {
+  obtenerSolicitudes(skip: number = 0, limit: number =  100): Observable<any[]> {
     if (skip < 0 || limit <= 0) {
       throw new Error('Parámetros inválidos: "skip" debe ser >= 0 y "limit" > 0');
     }

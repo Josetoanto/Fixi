@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderClientComponent } from '../../component/header-client/header-client.component';
 import { PerfilService } from '../../service/perfil.service';
 import { UserService } from '../../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-details',
@@ -26,7 +27,8 @@ export class ServiceDetailsComponent implements OnInit {
     private servicioService: ServicioService,
     private solicitudService: SolicitudService, // Inyección del servicio de solicitudes,
     private userService: UserService,
-    private perfilService: PerfilService
+    private perfilService: PerfilService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -99,6 +101,7 @@ export class ServiceDetailsComponent implements OnInit {
       next: (response) => {
         console.log('Solicitud creada:', response);
         alert('Solicitud creada con éxito.');
+        this.router.navigate(['/homeClient'])
       },
       error: (error) => {
         console.error('Error al crear la solicitud:', error);

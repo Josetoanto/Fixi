@@ -1,21 +1,21 @@
 <app-header-client></app-header-client>
 
 <div class="servicios-container">
-  <h2>Tu historial</h2>
+  <h2>Tus servicios</h2>
 
-  <!-- Mostrar mensaje de carga -->
+  <!-- Mensaje de carga -->
   <div *ngIf="loading" class="loading">Cargando solicitudes...</div>
 
-  <!-- Mostrar mensaje de error -->
+  <!-- Mensaje de error -->
   <div *ngIf="error" class="error">{{ error }}</div>
 
-  <!-- Mostrar lista vacía -->
+  <!-- Lista vacía -->
   <div *ngIf="!loading && solicitudes.length === 0" class="empty">
     <img src="assets/no-servicios.png" alt="Sin solicitudes" />
     <p>Parece que no tienes solicitudes registradas.</p>
   </div>
 
-  <!-- Mostrar lista de solicitudes -->
+  <!-- Lista de solicitudes -->
   <ul *ngIf="solicitudes.length > 0" class="solicitudes-list">
     <li *ngFor="let solicitud of solicitudes" class="solicitud-item">
       <h3>Solicitud ID: {{ solicitud.solicitud_id }}</h3>
@@ -26,22 +26,39 @@
       <p><strong>Fecha del servicio:</strong> {{ solicitud.fecha_servicio | date: 'shortDate' }}</p>
       <p><strong>Hora:</strong> {{ solicitud.hora }}</p>
 
-      <button *ngIf="!solicitud.cancelado && solicitud.status === 'finalizada'" class="pago-btn" (click)="seleccionarSolicitud(solicitud)">
-        Realizar pago
-      </button>
+      <div class="action-buttons">
+        <button
+          *ngIf="!solicitud.cancelado && solicitud.status === 'finalizada'"
+          class="pago-btn"
+          (click)="seleccionarSolicitud(solicitud)"
+        >
+          Realizar pago
+        </button>
 
-      <button *ngIf="!solicitud.cancelado" class="chat-btn" (click)="iniciarChat(solicitud.servicio_id)">Chat</button>
+        <button
+          *ngIf="!solicitud.cancelado"
+          class="chat-btn"
+          (click)="iniciarChat(solicitud.servicio_id)"
+        >
+          Chat
+        </button>
 
-      <button *ngIf="!solicitud.cancelado" (click)="cancelarSolicitud(solicitud.solicitud_id)" class="cancelar-btn">
-        Cancelar
-      </button>
-      <button 
-      *ngIf="!solicitud.cancelado && (solicitud.status === 'ACEPTADO' || solicitud.status === 'FINALIZADO') && !solicitud.pagado" 
-      class="pago-btn" 
-      (click)="seleccionarSolicitud(solicitud)">
-      Realizar pago
-      </button>
-      
+        <button
+          *ngIf="!solicitud.cancelado"
+          class="cancelar-btn"
+          (click)="cancelarSolicitud(solicitud.solicitud_id)"
+        >
+          Cancelar
+        </button>
+
+        <button
+          *ngIf="!solicitud.cancelado && (solicitud.status === 'ACEPTADO' || solicitud.status === 'FINALIZADO') && !solicitud.pagado"
+          class="pago-btn"
+          (click)="seleccionarSolicitud(solicitud)"
+        >
+          Realizar pago
+        </button>
+      </div>
 
       <p *ngIf="solicitud.cancelado" class="cancelled-text">
         Esta solicitud ha sido cancelada.
@@ -49,44 +66,53 @@
     </li>
   </ul>
 
-  <!-- Formulario de Pago -->
+  <!-- Formulario de pago -->
   <div *ngIf="selectedSolicitud" class="pago-form">
-    <h3>Formulario de pago para Solicitud ID: {{ selectedSolicitud.solicitud_id }}</h3>
-    <form (ngSubmit)="realizarPago()">
-      <div>
-        <label for="ciudad">Ciudad:</label>
-        <input [(ngModel)]="pagoData.direccion.ciudad" name="ciudad" required />
+    <h3>Pago para Solicitud ID: {{ selectedSolicitud.solicitud_id }}</h3>
+    <form (ngSubmit)="realizarPago()" class="formulario">
+      <fieldset>
+        <legend>Dirección</legend>
+        <div class="form-group">
+          <label>Ciudad:</label>
+          <input [(ngModel)]="pagoData.direccion.ciudad" name="ciudad" required />
+        </div>
+        <div class="form-group">
+          <label>Colonia:</label>
+          <input [(ngModel)]="pagoData.direccion.colonia" name="colonia" required />
+        </div>
+        <div class="form-group">
+          <label>Avenida:</label>
+          <input [(ngModel)]="pagoData.direccion.avenida" name="avenida" required />
+        </div>
+        <div class="form-group">
+          <label>Número Exterior:</label>
+          <input [(ngModel)]="pagoData.direccion.numexterior" name="numexterior" type="numberExteer" required />
+        </div>
+        <div class="form-group">
+          <label>Código Postal:</label>
+          <input [(ngModel)]="pagoData.direccion.codigopost" name="codigopost" type="codigopostal" required />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Información de tarjeta</legend>
+        <div class="form-group">
+          <label>Número de tarjeta:</label>
+          <input [(ngModel)]="pagoData.tarjeta.numero" name="numero" type="number" required />
+        </div>
+        <div class="form-group">
+          <label>Nombre en tarjeta:</label>
+          <input [(ngModel)]="pagoData.tarjeta.nombre" name="nombre" required />
+        </div>
+        <div class="form-group">
+          <label>CVC:</label>
+          <input [(ngModel)]="pagoData.tarjeta.cvc" name="cvc" type="number" required />
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" class="pago-submit">Pagar</button>
       </div>
-      <div>
-        <label for="colonia">Colonia:</label>
-        <input [(ngModel)]="pagoData.direccion.colonia" name="colonia" required />
-      </div>
-      <div>
-        <label for="avenida">Avenida:</label>
-        <input [(ngModel)]="pagoData.direccion.avenida" name="avenida" required />
-      </div>
-      <div>
-        <label for="numexterior">Número Exterior:</label>
-        <input [(ngModel)]="pagoData.direccion.numexterior" name="numexterior" type="number" required />
-      </div>
-      <div>
-        <label for="codigopost">Código Postal:</label>
-        <input [(ngModel)]="pagoData.direccion.codigopost" name="codigopost" type="number" required />
-      </div>
-      <h4>Información de tarjeta</h4>
-      <div>
-        <label for="numero">Número de tarjeta:</label>
-        <input [(ngModel)]="pagoData.tarjeta.numero" name="numero" type="number" required />
-      </div>
-      <div>
-        <label for="nombre">Nombre en tarjeta:</label>
-        <input [(ngModel)]="pagoData.tarjeta.nombre" name="nombre" required />
-      </div>
-      <div>
-        <label for="cvc">CVC:</label>
-        <input [(ngModel)]="pagoData.tarjeta.cvc" name="cvc" type="number" required />
-      </div>
-      <button type="submit">Pagar</button>
     </form>
   </div>
 </div>

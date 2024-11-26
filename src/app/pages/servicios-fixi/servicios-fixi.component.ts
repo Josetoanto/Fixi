@@ -24,7 +24,7 @@ export class ServiciosFixiComponent implements AfterViewInit {
   constructor(private solicitudService: SolicitudService, private userService: UserService,private perfilService: PerfilService,private servicioService: ServicioService, private router: Router) {}
 
   obtenerSolicitudes(): void {
-    this.solicitudService.obtenerSolicitudes(0, 20).subscribe({
+    this.solicitudService.obtenerSolicitudes(0, 100).subscribe({
       next: (data) => {
         // Filtramos las solicitudes canceladas
         this.solicitudes = data.filter(solicitud => !solicitud.cancelado);

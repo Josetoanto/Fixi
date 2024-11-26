@@ -23,7 +23,7 @@ export class CreateServiceComponent {
     'Fontanería',
     'Pintura',
     'Montaje de muebles',
-    'Albañilería',
+    'Construccion',
     'Mudanza',
     'Carpintería'
   ];
@@ -66,6 +66,7 @@ export class CreateServiceComponent {
         alert('Servicio creado exitosamente');
         console.log(response);
         this.cancelar();
+        window.location.reload();
       },
       (error) => {
         console.error('Error al crear el servicio:', error);
