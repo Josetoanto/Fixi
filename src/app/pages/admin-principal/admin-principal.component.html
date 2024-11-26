@@ -1,56 +1,55 @@
-  <div class="main-container">
-      <!-- Header -->
-      <header class="header">
-        <div class="logo">AdministradorPrincipal</div>
-        <div class="app-title">Fixi</div>
-        <div class="header-icons">
-          <span class="icon gear-icon"></span>
-          <span class="icon user-icon"></span>
-          <span class="icon menu-icon"></span>
-        </div>
-      </header>
-    
-      <div class="content">
-        <aside class="sidebar">
-          <ul class="menu">
-            <li class="menu-item active">
-              <a href="/homeAdmin">
-                <span class="menu-icon">🏠</span> Panel
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="/clients">
-                <span class="menu-icon">🛒</span> Usuarios
-              </a>
-            </li>
-            <li class="menu-item">
-              <a href="/fixis">
-                <span class="menu-icon">👥</span> Fixis
-              </a>
-            </li>
-          </ul>
-          
-          <div class="logout">
-            <a href="/" class="logout-link">
-              <span>↩</span> Cerrar Sesión
-            </a>
-          </div>
-        </aside>
-    
-        <div class="dashboard">
-          <div  class="card">
-            <p class="card-title">Usuarios Activos</p>
-            <p class="card-value">{{ usuariosActivos }}</p>
-          </div>
-          <div   class="card">
-            <p class="card-title">Fixis Activos</p>
-            <p class="card-value">{{ fixisActivos }}</p>
-          </div>
-          <div  class="card">
-            <p class="card-title">Ingresos Totales</p>
-            <p class="card-value">50$</p>
-          </div>
-        </div>
+<div class="main-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">AdministradorPrincipal</div>
+    <div class="app-title">Fixi</div>
+    <div class="header-icons">
+      <span class="icon gear-icon"></span>
+      <span class="icon user-icon"></span>
+      <span class="icon menu-icon"></span>
+    </div>
+  </header>
+
+  <div class="content">
+    <aside class="sidebar">
+      <ul class="menu">
+        <li class="menu-item active">
+          <a href="/homeAdmin">
+            <span class="menu-icon">🏠</span> Panel
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/clients">
+            <span class="menu-icon">🛒</span> Usuarios
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="/fixis">
+            <span class="menu-icon">👥</span> Fixis
+          </a>
+        </li>
+      </ul>
+      
+      <div class="logout">
+        <a href="/" class="logout-link">
+          <span>↩</span> Cerrar Sesión
+        </a>
+      </div>
+    </aside>
+
+    <div class="dashboard">
+      <div class="card">
+        <p class="card-title">Usuarios Activos</p>
+        <p class="card-value">{{ usuariosActivos }}</p>
+      </div>
+      <div class="card">
+        <p class="card-title">Fixis Activos</p>
+        <p class="card-value">{{ fixisActivos }}</p>
+      </div>
+      <div class="card">
+        <p class="card-title">Ingresos Totales</p>
+        <p class="card-value">{{ ingresosTotales | currency: 'USD' }}</p>
       </div>
     </div>
-    
+  </div>
+</div>

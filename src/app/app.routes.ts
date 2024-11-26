@@ -15,6 +15,7 @@ import { FixiPerfilComponent } from './pages/fixi-perfil/fixi-perfil.component';
 import { HistorialComponent } from './pages/historial/historial.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { ServiceDetailsComponent } from './pages/service-details/service-details.component';
+import { ServiciosFixiComponent } from './pages/servicios-fixi/servicios-fixi.component';
 
 export const routes: Routes = [
     { path: '', component: HomePageComponent }, 
@@ -32,5 +33,6 @@ export const routes: Routes = [
   { path: 'servicio/:id', component: ServiceDetailsComponent },
   { path: 'historial', component: HistorialComponent },
   { path: 'chat', component: ChatComponent },
+  { path: 'serviciosFixi', component: ServiciosFixiComponent },
   { path: '**', component: ErrorPageComponent},
 ];

@@ -1,4 +1,5 @@
 <app-header-client></app-header-client>
+
 <div class="servicios-container">
   <h2>Tu historial</h2>
 
@@ -21,28 +22,71 @@
       <p><strong>Costo:</strong> ${{ solicitud.costo }}</p>
       <p><strong>Status:</strong> {{ solicitud.status }}</p>
       <p><strong>Cancelado:</strong> {{ solicitud.cancelado ? 'Sí' : 'No' }}</p>
-      <p>
-        <strong>Fecha de creación:</strong>
-        {{ solicitud.fecha | date: 'shortDate' }}
-      </p>
-      <p>
-        <strong>Fecha del servicio:</strong>
-        {{ solicitud.fecha_servicio | date: 'shortDate' }}
-      </p>
+      <p><strong>Fecha de creación:</strong> {{ solicitud.fecha | date: 'shortDate' }}</p>
+      <p><strong>Fecha del servicio:</strong> {{ solicitud.fecha_servicio | date: 'shortDate' }}</p>
       <p><strong>Hora:</strong> {{ solicitud.hora }}</p>
-      <button         *ngIf="!solicitud.cancelado"
- class="chat-btn" (click)="iniciarChat(solicitud.servicio_id)">Chat</button>
 
-      <button
-        *ngIf="!solicitud.cancelado"
-        (click)="cancelarSolicitud(solicitud.solicitud_id)"
-        class="cancelar-btn"
-      >
+      <button *ngIf="!solicitud.cancelado && solicitud.status === 'finalizada'" class="pago-btn" (click)="seleccionarSolicitud(solicitud)">
+        Realizar pago
+      </button>
+
+      <button *ngIf="!solicitud.cancelado" class="chat-btn" (click)="iniciarChat(solicitud.servicio_id)">Chat</button>
+
+      <button *ngIf="!solicitud.cancelado" (click)="cancelarSolicitud(solicitud.solicitud_id)" class="cancelar-btn">
         Cancelar
       </button>
+      <button 
+      *ngIf="!solicitud.cancelado && (solicitud.status === 'ACEPTADO' || solicitud.status === 'FINALIZADO') && !solicitud.pagado" 
+      class="pago-btn" 
+      (click)="seleccionarSolicitud(solicitud)">
+      Realizar pago
+      </button>
+      
+
       <p *ngIf="solicitud.cancelado" class="cancelled-text">
         Esta solicitud ha sido cancelada.
       </p>
     </li>
   </ul>
+
+  <!-- Formulario de Pago -->
+  <div *ngIf="selectedSolicitud" class="pago-form">
+    <h3>Formulario de pago para Solicitud ID: {{ selectedSolicitud.solicitud_id }}</h3>
+    <form (ngSubmit)="realizarPago()">
+      <div>
+        <label for="ciudad">Ciudad:</label>
+        <input [(ngModel)]="pagoData.direccion.ciudad" name="ciudad" required />
+      </div>
+      <div>
+        <label for="colonia">Colonia:</label>
+        <input [(ngModel)]="pagoData.direccion.colonia" name="colonia" required />
+      </div>
+      <div>
+        <label for="avenida">Avenida:</label>
+        <input [(ngModel)]="pagoData.direccion.avenida" name="avenida" required />
+      </div>
+      <div>
+        <label for="numexterior">Número Exterior:</label>
+        <input [(ngModel)]="pagoData.direccion.numexterior" name="numexterior" type="number" required />
+      </div>
+      <div>
+        <label for="codigopost">Código Postal:</label>
+        <input [(ngModel)]="pagoData.direccion.codigopost" name="codigopost" type="number" required />
+      </div>
+      <h4>Información de tarjeta</h4>
+      <div>
+        <label for="numero">Número de tarjeta:</label>
+        <input [(ngModel)]="pagoData.tarjeta.numero" name="numero" type="number" required />
+      </div>
+      <div>
+        <label for="nombre">Nombre en tarjeta:</label>
+        <input [(ngModel)]="pagoData.tarjeta.nombre" name="nombre" required />
+      </div>
+      <div>
+        <label for="cvc">CVC:</label>
+        <input [(ngModel)]="pagoData.tarjeta.cvc" name="cvc" type="number" required />
+      </div>
+      <button type="submit">Pagar</button>
+    </form>
+  </div>
 </div>

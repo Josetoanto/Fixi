@@ -7,18 +7,19 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './admin-principal.component.html',
-  styleUrl: './admin-principal.component.scss'
+  styleUrls: ['./admin-principal.component.scss']
 })
 export class AdminPrincipalComponent {
   usuariosActivos = 0;
   fixisActivos = 0;
-  ingresosTotales = 50.0; // Valor estático
+  ingresosTotales = 0.0; // Valor dinámico
   isLoading = false; // Variable de carga
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.loadUsers();
+    this.loadIngresos(); // Cargar ingresos de proveedores
   }
 
   loadUsers(): void {
@@ -41,6 +42,19 @@ export class AdminPrincipalComponent {
       },
       () => {
         this.isLoading = false; 
+      }
+    );
+  }
+
+  loadIngresos(): void {
+    this.userService.getProveedorIngresos().subscribe(
+      (data) => {
+        console.log(data);
+        const totalIngresos = data.reduce((sum: number, proveedor: any) => sum + proveedor.ingresos, 0);
+        this.ingresosTotales = totalIngresos * 0.2; // Obtener el 20% de los ingresos totales
+      },
+      (error) => {
+        console.error('Error al obtener ingresos de proveedores:', error);
       }
     );
   }
