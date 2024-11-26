@@ -1,199 +1,182 @@
 .perfil-fixi-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-  
-    .perfil-izquierda,
-    .perfil-derecha {
-      flex: 1;
-    }
-  
-    .profile-card {
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 20px;
-      background-color: #fff;
-  
-      .profile-photo {
-        text-align: center;
-  
-        img {
-          border-radius: 50%;
-          width: 150px;
-          height: 150px;
-          object-fit: cover;
-        }
-      }
-  
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-  
-        label {
-          font-weight: bold;
-        }
-  
-        input,
-        textarea {
-          width: 100%;
-          padding: 5px;
-          border: 1px solid #ddd;
-          border-radius: 5px;
-        }
-  
-        .form-buttons {
-          display: flex;
-          justify-content: space-between;
-          gap: 10px;
-  
-          .save-button {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-  
-            &:hover {
-              background-color: #218838;
-            }
-          }
-  
-          .cancel-button {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-  
-            &:hover {
-              background-color: #c82333;
-            }
-          }
-        }
-      }
-  
-      .edit-button {
-        display: block;
-        margin: 20px auto;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-  
-        &:hover {
-          background-color: #0056b3;
-        }
-      }
-    }
-  }
-  .trabajo-card {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 16px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-  
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-  
-    .trabajo-header {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 8px;
-    }
-  
-    .trabajo-body {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.4;
-  
-      .trabajo-item {
-        margin-bottom: 6px;
-  
-        span {
-          font-weight: bold;
-          color: #444;
-        }
-      }
-    }
-  
-    .trabajo-footer {
-      margin-top: 12px;
-      display: flex;
-      justify-content: flex-end;
-  
-      button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 8px 12px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.9rem;
-  
-        &:hover {
-          background-color: #0056b3;
-        }
-      }
-    }
-  }
-  
-  .trabajos-hechos {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-  
-    .trabajo-hecho {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 16px;
-      background-color: #f9f9f9;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-      p {
-        margin: 4px 0;
-      }
-  
-      .trabajo-imagen {
-        width: 100%;
-        max-height: 200px;
-        object-fit: cover;
-        margin-top: 8px;
-        border-radius: 4px;
-      }
-  
-      .subir-imagen {
-        margin-top: 12px;
-  
-        label {
-          font-weight: bold;
-          margin-right: 8px;
-        }
-  
-        input[type='file'] {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-  .imagen-trabajo {
-    max-width: 200px; /* Establece un tamaño máximo para el ancho */
-    max-height: 200px; /* Establece un tamaño máximo para la altura */
-    object-fit: cover; /* Mantiene la relación de aspecto, recortando si es necesario */
-    border-radius: 8px;
-    margin: 10px 0;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f5f5; 
+
+.perfil-izquierda,
+.perfil-derecha {
+  flex: 1;
+  min-width: 300px;
+}
+
+.profile-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-photo {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.profile-photo img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid #007bff; 
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.profile-info hr {
+  margin: 10px 0;
+  border: 0.5px solid #ddd;
+}
+
+.profile-info p {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.habilidad {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.habilidad:hover {
+  background-color: #0056b3;
+}
+
+.edit-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.trabajo-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trabajo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.trabajo {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.trabajos-hechos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.imagen-trabajo {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.star {
+  color: #f4c150; 
+  font-size: 1.2rem;
+  margin: 0 2px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.save-button,
+.cancel-button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #c82333;
+}
+}
